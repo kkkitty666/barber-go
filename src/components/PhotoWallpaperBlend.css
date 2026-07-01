@@ -1,0 +1,235 @@
+:root {
+  --blend-tone-dark: #0a0a0a;
+  --blend-tone-mid: #141414;
+  --blend-tone-light: #1c1c1c;
+  --blend-zone: clamp(9rem, 30vh, 20rem);
+  --blend-zone-side: clamp(5rem, 22vw, 14rem);
+}
+
+html[data-bg-mode="grainient"] {
+  --blend-tone-dark: #3a3a3a;
+  --blend-tone-mid: #525252;
+  --blend-tone-light: #6b6b6b;
+}
+
+.photo-wallpaper-blend {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.photo-wallpaper-blend__media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* Long, soft dissolve — photo gradually opens into wallpaper below */
+.photo-wallpaper-blend__media--fade-bottom {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 22%,
+    rgba(0, 0, 0, 0.97) 38%,
+    rgba(0, 0, 0, 0.88) 52%,
+    rgba(0, 0, 0, 0.72) 64%,
+    rgba(0, 0, 0, 0.52) 74%,
+    rgba(0, 0, 0, 0.32) 84%,
+    rgba(0, 0, 0, 0.14) 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 22%,
+    rgba(0, 0, 0, 0.97) 38%,
+    rgba(0, 0, 0, 0.88) 52%,
+    rgba(0, 0, 0, 0.72) 64%,
+    rgba(0, 0, 0, 0.52) 74%,
+    rgba(0, 0, 0, 0.32) 84%,
+    rgba(0, 0, 0, 0.14) 92%,
+    transparent 100%
+  );
+}
+
+/* Side dissolve — image flows into wallpaper on the left */
+.photo-wallpaper-blend__media--fade-left {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.12) 8%,
+    rgba(0, 0, 0, 0.32) 18%,
+    rgba(0, 0, 0, 0.55) 28%,
+    rgba(0, 0, 0, 0.78) 38%,
+    rgba(0, 0, 0, 0.92) 48%,
+    #000 58%,
+    #000 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.12) 8%,
+    rgba(0, 0, 0, 0.32) 18%,
+    rgba(0, 0, 0, 0.55) 28%,
+    rgba(0, 0, 0, 0.78) 38%,
+    rgba(0, 0, 0, 0.92) 48%,
+    #000 58%,
+    #000 100%
+  );
+}
+
+.photo-wallpaper-blend__media--fade-bottom.photo-wallpaper-blend__media--fade-left {
+  -webkit-mask-image:
+    linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 18%,
+      rgba(0, 0, 0, 0.92) 34%,
+      rgba(0, 0, 0, 0.72) 52%,
+      rgba(0, 0, 0, 0.42) 72%,
+      rgba(0, 0, 0, 0.16) 88%,
+      transparent 100%
+    ),
+    linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.2) 10%,
+      rgba(0, 0, 0, 0.55) 24%,
+      rgba(0, 0, 0, 0.85) 38%,
+      #000 52%,
+      #000 100%
+    );
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 18%,
+      rgba(0, 0, 0, 0.92) 34%,
+      rgba(0, 0, 0, 0.72) 52%,
+      rgba(0, 0, 0, 0.42) 72%,
+      rgba(0, 0, 0, 0.16) 88%,
+      transparent 100%
+    ),
+    linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.2) 10%,
+      rgba(0, 0, 0, 0.55) 24%,
+      rgba(0, 0, 0, 0.85) 38%,
+      #000 52%,
+      #000 100%
+    );
+  mask-composite: intersect;
+}
+
+/* Color wash — tints photo toward wallpaper palette while it fades */
+.photo-wallpaper-blend__melt {
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.photo-wallpaper-blend__melt--bottom {
+  left: 0;
+  right: 0;
+  bottom: calc(var(--blend-zone) * -0.15);
+  height: calc(var(--blend-zone) * 1.35);
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    color-mix(in srgb, var(--blend-tone-dark) 8%, transparent) 28%,
+    color-mix(in srgb, var(--blend-tone-dark) 28%, transparent) 48%,
+    color-mix(in srgb, var(--blend-tone-mid) 45%, transparent) 64%,
+    color-mix(in srgb, var(--blend-tone-light) 55%, transparent) 78%,
+    color-mix(in srgb, var(--blend-tone-mid) 38%, transparent) 90%,
+    transparent 100%
+  );
+  mix-blend-mode: soft-light;
+}
+
+.photo-wallpaper-blend__melt--left {
+  top: 0;
+  bottom: 0;
+  left: calc(var(--blend-zone-side) * -0.12);
+  width: calc(var(--blend-zone-side) * 1.4);
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    color-mix(in srgb, var(--blend-tone-dark) 10%, transparent) 22%,
+    color-mix(in srgb, var(--blend-tone-mid) 35%, transparent) 42%,
+    color-mix(in srgb, var(--blend-tone-light) 48%, transparent) 58%,
+    color-mix(in srgb, var(--blend-tone-mid) 30%, transparent) 72%,
+    transparent 100%
+  );
+  mix-blend-mode: soft-light;
+}
+
+/* Soft luminance bridge — no blend mode, sits on top for smooth handoff */
+.photo-wallpaper-blend__feather {
+  position: absolute;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.photo-wallpaper-blend__feather--bottom {
+  left: 0;
+  right: 0;
+  bottom: calc(var(--blend-zone) * -0.08);
+  height: calc(var(--blend-zone) * 1.1);
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.04) 35%,
+    rgba(0, 0, 0, 0.1) 55%,
+    rgba(0, 0, 0, 0.06) 72%,
+    transparent 100%
+  );
+}
+
+html[data-bg-mode="grainient"] .photo-wallpaper-blend__feather--bottom {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    color-mix(in srgb, var(--blend-tone-dark) 6%, transparent) 38%,
+    color-mix(in srgb, var(--blend-tone-mid) 14%, transparent) 58%,
+    color-mix(in srgb, var(--blend-tone-light) 10%, transparent) 76%,
+    transparent 100%
+  );
+}
+
+.photo-wallpaper-blend__feather--left {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: var(--blend-zone-side);
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.06) 45%,
+    rgba(0, 0, 0, 0.03) 70%,
+    transparent 100%
+  );
+}
+
+html[data-bg-mode="grainient"] .photo-wallpaper-blend__feather--left {
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    color-mix(in srgb, var(--blend-tone-dark) 8%, transparent) 40%,
+    color-mix(in srgb, var(--blend-tone-mid) 12%, transparent) 65%,
+    transparent 100%
+  );
+}
+
+/* Sections that host blended photos extend into the next block */
+.section-photo-blend {
+  overflow: visible !important;
+  margin-bottom: calc(var(--blend-zone) * -0.55);
+  padding-bottom: calc(var(--blend-zone) * 0.55);
+}
+
+.section-photo-blend-side {
+  overflow: visible !important;
+}

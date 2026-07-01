@@ -1,0 +1,100 @@
+.first-visit-promo {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.first-visit-promo__backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+}
+
+.first-visit-promo__panel {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 28rem);
+  padding: 2rem 1.75rem 1.75rem;
+  border: 1px solid rgba(192, 192, 192, 0.45);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(ellipse at top, rgba(192, 192, 192, 0.12) 0%, transparent 55%),
+    linear-gradient(165deg, rgba(18, 16, 14, 0.98) 0%, rgba(8, 7, 6, 0.99) 100%);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.55);
+}
+
+.first-visit-promo__close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.85rem;
+  border: 0;
+  background: transparent;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: rgba(192, 192, 192, 0.7);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.first-visit-promo__close:hover {
+  color: var(--gold);
+}
+
+.first-visit-promo__label {
+  margin: 0 0 0.75rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  color: rgba(192, 192, 192, 0.75);
+  text-transform: uppercase;
+}
+
+.first-visit-promo__title {
+  margin: 0;
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.35rem, 4vw, 1.75rem);
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.first-visit-promo__title span {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--gold);
+}
+
+.first-visit-promo__text {
+  margin: 1rem 0 0.85rem;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--foreground-muted);
+}
+
+.first-visit-promo__terms {
+  margin: 0 0 1.1rem;
+  padding-left: 1.1rem;
+  font-size: 0.72rem;
+  line-height: 1.55;
+  color: rgba(232, 232, 232, 0.65);
+}
+
+.first-visit-promo__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.first-visit-promo__cta,
+.first-visit-promo__secondary {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}

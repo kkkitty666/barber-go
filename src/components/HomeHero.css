@@ -1,0 +1,81 @@
+.hero-home {
+  position: relative;
+  overflow: visible;
+}
+
+.hero-home__flyer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-home__flyer-image {
+  object-position: 72% center;
+  transform: scale(1.06);
+}
+
+@media (min-width: 768px) {
+  .hero-home__flyer-image {
+    object-position: 68% center;
+    transform: scale(1.04);
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-home__flyer-image {
+    object-position: center center;
+  }
+}
+
+.hero-home__shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.94) 0%,
+    rgba(0, 0, 0, 0.86) 22%,
+    rgba(0, 0, 0, 0.58) 40%,
+    rgba(0, 0, 0, 0.22) 54%,
+    rgba(0, 0, 0, 0.06) 64%,
+    transparent 76%
+  );
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 58%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 58%, transparent 100%);
+}
+
+html[data-bg-mode="grainient"] .hero-home__shade {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.78) 22%,
+    color-mix(in srgb, var(--blend-tone-dark) 52%, transparent) 40%,
+    color-mix(in srgb, var(--blend-tone-mid) 18%, transparent) 54%,
+    color-mix(in srgb, var(--blend-tone-light) 8%, transparent) 64%,
+    transparent 76%
+  );
+}
+
+.hero-home__content {
+  position: relative;
+}
+
+@media (max-width: 767px) {
+  .hero-home__flyer-image {
+    object-position: 58% center;
+  }
+
+  .hero-home__shade {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.55) 0%,
+      rgba(0, 0, 0, 0.82) 32%,
+      rgba(0, 0, 0, 0.62) 58%,
+      rgba(0, 0, 0, 0.28) 78%,
+      transparent 100%
+    );
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}

@@ -6,18 +6,32 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "telegram:setup": "node scripts/telegram-setup.mjs",
+    "telegram:verify": "node scripts/telegram-verify.mjs",
+    "telegram:webhook": "node scripts/telegram-webhook.mjs",
+    "telegram:poll": "node scripts/telegram-poll.mjs"
   },
   "dependencies": {
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.6.1",
+    "@react-three/rapier": "^2.2.0",
+    "@use-gesture/react": "^10.3.1",
+    "gsap": "^3.15.0",
+    "meshline": "^3.3.1",
     "next": "16.2.9",
+    "ogl": "^1.0.11",
+    "qrcode.react": "^4.2.0",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "three": "^0.185.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/three": "^0.185.0",
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
     "tailwindcss": "^4",
