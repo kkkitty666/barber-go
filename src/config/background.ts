@@ -1,7 +1,3 @@
-export const BACKGROUND_STORAGE_KEY = "pc-barbershop-bg-mode";
-
-export type BackgroundMode = "grid" | "grainient";
-
 export const GRAINIENT_PRESET = {
   color1: "#3a3a3a",
   color2: "#6b6b6b",

@@ -17,7 +17,7 @@ export function Booking() {
 
         <CanvasFrame className="px-6 py-10 md:px-10">
           <p className="mb-8 text-sm text-foreground-muted">
-            Запишитесь через Dikidi — выберите удобное время и мастера
+            Запишитесь через {siteConfig.bookingLabel} — выберите удобное время и мастера
           </p>
 
           <div className="qr-frame mx-auto mb-6">
@@ -46,7 +46,7 @@ export function Booking() {
             rel="noopener noreferrer"
             className="btn-primary text-xs"
           >
-            Записаться на Dikidi
+            Записаться онлайн
           </a>
 
           <div className="mt-8 flex justify-center opacity-30">

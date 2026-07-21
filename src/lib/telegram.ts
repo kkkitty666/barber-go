@@ -1,5 +1,6 @@
 import { siteConfig } from "@/config/site";
-import { formatPrice } from "@/config/products";
+import { formatPrice, type Product } from "@/config/products";
+import type { ProductWithInventory } from "./inventory";
 import type { Order, OrderItem } from "./orders";
 
 const TELEGRAM_API = "https://api.telegram.org";
@@ -82,6 +83,109 @@ export async function notifyCustomerOrderReady(order: Order) {
   });
 }
 
+export async function sendTelegramMessage(chatId: string | number, text: string) {
+  await telegramRequest("sendMessage", {
+    chat_id: String(chatId),
+    text,
+  });
+}
+
+export async function sendTelegramInlineKeyboard(
+  chatId: string | number,
+  text: string,
+  inlineKeyboard: Array<Array<{ text: string; callback_data: string }>>,
+) {
+  await telegramRequest("sendMessage", {
+    chat_id: String(chatId),
+    text,
+    reply_markup: {
+      inline_keyboard: inlineKeyboard,
+    },
+  });
+}
+
+export async function editTelegramInlineKeyboard(
+  chatId: string | number,
+  messageId: number,
+  text: string,
+  inlineKeyboard: Array<Array<{ text: string; callback_data: string }>>,
+) {
+  await telegramRequest("editMessageText", {
+    chat_id: String(chatId),
+    message_id: messageId,
+    text,
+    reply_markup: {
+      inline_keyboard: inlineKeyboard,
+    },
+  });
+}
+
+function formatQuantityValue(product: ProductWithInventory): string {
+  if (product.quantity === null) {
+    return "не указано";
+  }
+
+  return `${product.quantity} шт.`;
+}
+
+export function formatInventoryLine(product: ProductWithInventory): string {
+  return [
+    `📦 ${product.name}`,
+    `Бренд: ${product.brand}`,
+    `Остаток: ${formatQuantityValue(product)}`,
+    `Статус: ${product.availabilityLabel}`,
+  ].join("\n");
+}
+
+export function formatInventoryPrompt(product: ProductWithInventory): string {
+  return [
+    formatInventoryLine(product),
+    "",
+    "Используйте кнопки ниже, чтобы изменить остаток.",
+  ].join("\n");
+}
+
+export function formatInventoryCustomInputPrompt(product: ProductWithInventory): string {
+  return [
+    `✏️ ${product.name}`,
+    "",
+    "Отправьте число — сколько штук сейчас в наличии.",
+    "Например: 12",
+  ].join("\n");
+}
+
+export function formatCategoryProductPickerMessage(
+  categoryLabel: string,
+  products: Array<{ product: Product; index: number }>,
+): string {
+  const lines = products.map(
+    ({ product, index }, position) => `${position + 1}. ${product.name}`,
+  );
+
+  return [
+    `Категория: ${categoryLabel}`,
+    "Выберите товар по номеру:",
+    "",
+    ...lines,
+  ].join("\n");
+}
+
+export function buildNumberedProductKeyboard(products: Array<{ index: number }>, rowSize = 4) {
+  const rows: Array<Array<{ text: string; callback_data: string }>> = [];
+
+  for (let position = 0; position < products.length; position += rowSize) {
+    rows.push(
+      products.slice(position, position + rowSize).map(({ index }, offset) => ({
+        text: String(position + offset + 1),
+        callback_data: `stock_item:${index}`,
+      })),
+    );
+  }
+
+  rows.push([{ text: "⬅ Назад к категориям", callback_data: "stock_back:categories" }]);
+  return rows;
+}
+
 export async function answerCallbackQuery(callbackQueryId: string, text: string) {
   await telegramRequest("answerCallbackQuery", {
     callback_query_id: callbackQueryId,
@@ -116,9 +220,12 @@ export function isStaffChat(chatId: string | number) {
   return String(chatId) === String(getStaffChatId());
 }
 
+/** Register webhook; auth via Telegram secret_token → X-Telegram-Bot-Api-Secret-Token header. */
 export async function setTelegramWebhook(appUrl: string, secret: string) {
+  const base = appUrl.replace(/\/$/, "");
   return telegramRequest("setWebhook", {
-    url: `${appUrl}/api/telegram/webhook?secret=${secret}`,
+    url: `${base}/api/telegram/webhook`,
+    secret_token: secret,
     allowed_updates: ["message", "callback_query"],
   });
 }

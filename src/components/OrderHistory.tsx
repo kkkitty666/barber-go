@@ -23,21 +23,41 @@ interface HistoryOrder {
 export function OrderHistoryContent() {
   const [orders, setOrders] = useState<HistoryOrder[]>([]);
   const [phone, setPhone] = useState("");
+  const [orderId, setOrderId] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  const loadOrders = useCallback(async (searchPhone?: string) => {
+  const loadOrders = useCallback(async (search?: { phone?: string; orderId?: string }) => {
     setLoading(true);
     setError("");
     try {
-      const orderIds = getSavedOrderRefs().map((entry) => entry.orderId);
+      const saved = getSavedOrderRefs();
+      const lookups = saved
+        .filter((entry) => entry.orderId && (entry.accessToken || entry.phone))
+        .map((entry) => ({
+          orderId: entry.orderId,
+          phone: entry.phone || undefined,
+          accessToken: entry.accessToken,
+        }));
+
+      if (search?.orderId?.trim() && search?.phone?.trim()) {
+        lookups.unshift({
+          orderId: search.orderId.trim(),
+          phone: search.phone.trim(),
+          accessToken: undefined,
+        });
+      }
+
+      if (lookups.length === 0) {
+        setOrders([]);
+        setLoading(false);
+        return;
+      }
+
       const response = await fetch("/api/orders/history", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          orderIds,
-          phone: searchPhone?.trim() || undefined,
-        }),
+        body: JSON.stringify({ lookups }),
       });
       const data = (await response.json()) as { orders?: HistoryOrder[]; error?: string };
       if (!response.ok) throw new Error(data.error ?? "Ошибка загрузки");
@@ -52,7 +72,7 @@ export function OrderHistoryContent() {
   useEffect(() => {
     const lastPhone = getLastUsedPhone();
     if (lastPhone) setPhone(lastPhone);
-    void loadOrders(lastPhone);
+    void loadOrders();
   }, [loadOrders]);
 
   return (
@@ -61,6 +81,7 @@ export function OrderHistoryContent() {
         <h1 className="order-history__title">История заказов</h1>
         <p className="order-history__lead">
           Здесь отображаются ваши текущие и прошлые заказы косметики с самовывозом из {siteConfig.fullAddress}.
+          Для поиска укажите номер заказа и телефон.
         </p>
       </div>
 
@@ -68,19 +89,29 @@ export function OrderHistoryContent() {
         className="order-history__search"
         onSubmit={(event) => {
           event.preventDefault();
-          void loadOrders(phone);
+          void loadOrders({ phone, orderId });
         }}
       >
+        <label className="order-history__field">
+          <span>Номер заказа</span>
+          <input
+            value={orderId}
+            onChange={(event) => setOrderId(event.target.value)}
+            placeholder="Например MRUM2BWJHTEG"
+            required
+          />
+        </label>
         <label className="order-history__field">
           <span>Телефон</span>
           <input
             value={phone}
             onChange={(event) => setPhone(event.target.value)}
             placeholder="+7 (999) 000-00-00"
+            required
           />
         </label>
         <button type="submit" className="btn-secondary text-xs">
-          Найти заказы
+          Найти заказ
         </button>
       </form>
 

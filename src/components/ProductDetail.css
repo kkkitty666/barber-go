@@ -4,11 +4,53 @@
 }
 
 .product-detail__price {
-  margin: 0.5rem 0 0.85rem;
+  margin: 0.5rem 0 0.35rem;
   font-family: var(--font-display), serif;
-  font-size: 1rem;
+  font-size: 1.25rem;
   letter-spacing: 0.1em;
-  color: var(--gold);
+  color: var(--gold-light);
+}
+
+.product-detail__stock {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0 0 0.85rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: rgba(192, 192, 192, 0.75);
+  text-transform: uppercase;
+}
+
+.product-detail__stock--low {
+  color: #f0d08b;
+}
+
+.product-detail__stock--out {
+  color: #d89b9b;
+}
+
+.product-detail__stock-icon {
+  display: none;
+}
+
+.product-detail__stock::before {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: #5cb87a;
+  box-shadow: 0 0 6px rgba(92, 184, 122, 0.55);
+}
+
+.product-detail__stock--low::before {
+  background: #c9a227;
+  box-shadow: 0 0 6px rgba(201, 162, 39, 0.55);
+}
+
+.product-detail__stock--out::before {
+  background: #a55b5b;
+  box-shadow: 0 0 6px rgba(165, 91, 91, 0.45);
 }
 
 .product-detail__actions {
@@ -35,11 +77,14 @@
   align-items: center;
   justify-content: center;
   padding: 2rem 1.5rem;
-  border: 1px solid rgba(192, 192, 192, 0.28);
+  border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   background:
     radial-gradient(ellipse at center, rgba(192, 192, 192, 0.08) 0%, transparent 70%),
     rgba(12, 11, 10, 0.9);
+  box-shadow:
+    inset 0 0 0 1px rgba(201, 162, 39, 0.06),
+    0 6px 24px rgba(0, 0, 0, 0.22);
 }
 
 .product-detail__image-wrap {
@@ -49,13 +94,18 @@
   max-width: 420px;
   aspect-ratio: 1;
   border-radius: var(--radius-md);
+  background: #e8e8e8;
+  isolation: isolate;
 }
 
 .product-detail__image {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
+  object-position: center;
+  background: #e8e8e8;
+  mix-blend-mode: multiply;
 }
 
 .product-detail__meta {
@@ -97,17 +147,10 @@
 .product-detail__title {
   margin: 0;
   font-family: var(--font-display), serif;
-  font-size: clamp(1.35rem, 3vw, 1.85rem);
-  letter-spacing: 0.14em;
+  font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+  line-height: 1.35;
+  letter-spacing: 0.1em;
   color: var(--gold-light);
-  text-transform: uppercase;
-}
-
-.product-detail__subtitle {
-  margin: -0.5rem 0 0;
-  font-size: 0.8rem;
-  letter-spacing: 0.14em;
-  color: var(--gold);
   text-transform: uppercase;
 }
 
@@ -179,8 +222,3 @@
   background: rgba(192, 192, 192, 0.1);
 }
 
-.product-detail__ratings-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem 1.5rem;
-}

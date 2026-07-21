@@ -34,9 +34,13 @@ yarn-error.log*
 .env*
 !.env.example
 
-# runtime order data
+# runtime order / inventory data (local fallback; use Supabase in production)
 /data/orders.json
+/data/inventory.json
 /data/telegram-bindings.json
+/data/telegram-pending-qty.json
+/data/*.json
+!/data/.gitkeep
 
 # vercel
 .vercel

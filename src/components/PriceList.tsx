@@ -35,15 +35,6 @@ export function PriceList() {
       ref={rootRef}
       className={`price-list ${visible ? "price-list--visible" : ""}`}
     >
-      <header className="price-list-header">
-        <div className="services-banner">
-          <span>ПРАЙС-ЛИСТ</span>
-        </div>
-        <p className="price-list-intro">
-          Запишитесь онлайн — мастер подберёт услугу под ваш образ.
-        </p>
-      </header>
-
       <div className="price-list-body">
         {siteConfig.priceList.map((section) => (
           <section key={section.category} className="price-list-section">
@@ -66,15 +57,23 @@ export function PriceList() {
                       {"icon" in item ? <PriceListIcon type={item.icon} /> : null}
                       <div className="price-list-row-info">
                         <span className="price-list-name">{item.name}</span>
+                        {"subtitle" in item && item.subtitle ? (
+                          <span className="price-list-subtitle">{item.subtitle}</span>
+                        ) : null}
+                        {"description" in item && item.description ? (
+                          <p className="price-list-desc">{item.description}</p>
+                        ) : null}
                         {item.duration && (
                           <span className="price-list-duration">{item.duration}</span>
                         )}
                       </div>
-                      <span className="price-list-price">{item.price}</span>
+                      <div className="price-list-row-side">
+                        {"featured" in item && item.featured ? (
+                          <span className="price-list-badge">Хит</span>
+                        ) : null}
+                        <span className="price-list-price">{item.price}</span>
+                      </div>
                     </div>
-                    {"featured" in item && item.featured && (
-                      <span className="price-list-badge">Хит</span>
-                    )}
                   </li>
                 );
               })}

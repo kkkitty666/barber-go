@@ -38,6 +38,7 @@ function saveEnvFile(path, env) {
     `TELEGRAM_BOT_TOKEN=${env.TELEGRAM_BOT_TOKEN}`,
     `TELEGRAM_STAFF_CHAT_ID=${env.TELEGRAM_STAFF_CHAT_ID}`,
     `TELEGRAM_WEBHOOK_SECRET=${env.TELEGRAM_WEBHOOK_SECRET}`,
+    `TELEGRAM_ADMIN_SECRET=${env.TELEGRAM_ADMIN_SECRET}`,
     "",
   ];
   writeFileSync(path, lines.join("\n"), "utf8");
@@ -121,25 +122,37 @@ async function main() {
 
   const webhookSecret =
     existing.TELEGRAM_WEBHOOK_SECRET || randomBytes(24).toString("hex");
+  const adminSecret =
+    existing.TELEGRAM_ADMIN_SECRET || randomBytes(24).toString("hex");
 
   const env = {
     NEXT_PUBLIC_APP_URL: appUrl.replace(/\/$/, ""),
     TELEGRAM_BOT_TOKEN: token,
     TELEGRAM_STAFF_CHAT_ID: staffChatId,
     TELEGRAM_WEBHOOK_SECRET: webhookSecret,
+    TELEGRAM_ADMIN_SECRET: adminSecret,
   };
 
   saveEnvFile(ENV_PATH, env);
   console.log(`\n✓ Сохранено: .env.local`);
 
   try {
-    await fetch(`https://api.telegram.org/bot${token}/setMyCommands`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        commands: [{ command: "start", description: "Подключить уведомления о заказах" }],
-      }),
+    await tg(token, "setMyCommands", {
+      commands: [
+        { command: "start", description: "Подключить уведомления о заказах" },
+        { command: "help", description: "Как пользоваться ботом" },
+      ],
     });
+    await tg(token, "setMyCommands", {
+      commands: [
+        { command: "stock", description: "Выбрать товар и изменить остаток" },
+        { command: "lowstock", description: "Товары с остатком 3 шт. и меньше" },
+        { command: "cancel", description: "Отменить ввод количества" },
+        { command: "help", description: "Показать все команды" },
+      ],
+      scope: { type: "chat", chat_id: Number(staffChatId) },
+    });
+    console.log("✓ Подсказки команд установлены");
   } catch {
     /* optional */
   }
@@ -153,13 +166,15 @@ async function main() {
 
   if (!skipWebhook) {
     console.log("\n5. Регистрируем webhook...");
-    const webhookUrl = `${env.NEXT_PUBLIC_APP_URL}/api/telegram/webhook?secret=${webhookSecret}`;
+    const webhookUrl = `${env.NEXT_PUBLIC_APP_URL}/api/telegram/webhook`;
     try {
       await tg(token, "setWebhook", {
         url: webhookUrl,
+        secret_token: webhookSecret,
         allowed_updates: ["message", "callback_query"],
       });
       console.log(`✓ Webhook: ${webhookUrl}`);
+      console.log("✓ secret_token (заголовок X-Telegram-Bot-Api-Secret-Token)");
       const info = await tg(token, "getWebhookInfo");
       if (info.last_error_message) {
         console.warn(`\n⚠ Webhook: ${info.last_error_message}`);

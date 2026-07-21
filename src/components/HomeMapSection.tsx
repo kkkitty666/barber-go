@@ -24,16 +24,14 @@ function MessengerIcon({ name }: { name: string }) {
 
 export function HomeMapSection() {
   return (
-    <section className="section-padding relative z-10 pb-28 md:pb-20">
-      <div className="relative z-10 mx-auto max-w-6xl">
-        <div className="home-map-frame relative overflow-hidden">
-          <CornerFlourish position="top-left" className="top-3 left-3 z-10" />
-          <CornerFlourish position="top-right" className="top-3 right-3 z-10" />
-          <CornerFlourish position="bottom-left" className="bottom-3 left-3 z-10" />
-          <CornerFlourish position="bottom-right" className="right-3 bottom-3 z-10" />
+    <section id="contacts" className="section-padding relative z-10 pb-[calc(var(--mobile-bar-height)+var(--safe-bottom)+2rem)] md:pb-20">
+      <div className="relative z-10 mx-auto max-w-7xl">
+        <div className="home-map-frame relative">
+          <div className="grid min-h-[420px] md:grid-cols-2 md:min-h-[480px]">
+            <div className="home-map-panel order-2 flex flex-col justify-center px-8 py-12 md:order-1 md:px-12 lg:px-14">
+              <CornerFlourish position="top-left" className="top-3 left-3 z-10" />
+              <CornerFlourish position="bottom-left" className="bottom-3 left-3 z-10" />
 
-          <div className="grid min-h-[420px] lg:grid-cols-2 lg:min-h-[480px]">
-            <div className="home-map-panel order-2 flex flex-col justify-center px-8 py-12 md:px-12 lg:order-1 lg:px-14">
               <h2 className="font-display mb-8 text-2xl tracking-[0.2em] text-white uppercase md:text-3xl">
                 Контакты
               </h2>
@@ -64,9 +62,9 @@ export function HomeMapSection() {
                     href={m.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/30 text-gold transition-all hover:border-gold hover:bg-gold/10"
-                    title={m.name}
-                    aria-label={m.name}
+                    className="icon-badge icon-badge--inverse h-11 w-11"
+                    title={"hint" in m && m.hint ? m.hint : m.name}
+                    aria-label={"hint" in m && m.hint ? m.hint : m.name}
                   >
                     <MessengerIcon name={m.name} />
                   </a>
@@ -74,7 +72,7 @@ export function HomeMapSection() {
               </div>
             </div>
 
-            <div className="home-map-mapwrap relative order-1 min-h-[320px] lg:order-2 lg:min-h-[480px]">
+            <div className="home-map-mapwrap order-1 md:order-2">
               <YandexMapEmbed />
             </div>
           </div>

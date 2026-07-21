@@ -20,7 +20,7 @@ export const blogPosts: BlogPost[] = [
     date: "20 ФЕВРАЛЯ 2024",
     readTime: "6 МИН",
     category: "barbershop",
-    image: "/assets/flyer-interior.png",
+    image: "/assets/blog/first-visit-barbershop.png",
     excerpt:
       "Как подготовиться, что ожидать от визита и как получить стрижку, которой вы будете довольны.",
     featured: true,
@@ -35,7 +35,7 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "Запись и выбор мастера",
         paragraphs: [
-          "Мы работаем по записи — это экономит ваше время и позволяет мастеру полностью сосредоточиться на вас. Записаться можно онлайн через Dikidi: выберите услугу, удобное время и барбера.",
+          "Мы работаем по записи — это экономит ваше время и позволяет мастеру полностью сосредоточиться на вас. Записаться можно онлайн через YCLIENTS: выберите услугу, удобное время и барбера.",
           "Если не уверены, к кому записаться, ориентируйтесь на стиль работ в разделе «Наши работы» или спросите администратора — подскажем мастера под вашу задачу.",
         ],
       },
@@ -76,7 +76,7 @@ export const blogPosts: BlogPost[] = [
     date: "01 ИЮЛЯ 2025",
     readTime: "10 МИН",
     category: "style",
-    image: "/assets/works/work-1.jpg",
+    image: "/assets/blog/barbershop-style-center.png",
     excerpt:
       "От классических барбершопов до современной культуры grooming — почему мужчины снова выбирают барберов.",
     sections: [
@@ -122,7 +122,7 @@ export const blogPosts: BlogPost[] = [
     date: "25 МАЯ 2025",
     readTime: "7 МИН",
     category: "haircuts",
-    image: "/assets/works/work-3.jpg",
+    image: "/assets/blog/top-5-gentleman-haircuts.png",
     excerpt:
       "Пять универсальных стрижек, которые подчёркивают характер и работают в офисе, на встрече и вне расписания.",
     sections: [
@@ -176,7 +176,7 @@ export const blogPosts: BlogPost[] = [
     date: "12 ИЮНЯ 2026",
     readTime: "5 МИН",
     category: "barbershop",
-    image: "/assets/works/work-2.jpg",
+    image: "/assets/blog/beard-winter-care.png",
     excerpt: "Как сохранить бороду ухоженной в холодный сезон — без сухости и зуда.",
     sections: [
       {
@@ -207,7 +207,7 @@ export const blogPosts: BlogPost[] = [
     date: "28 МАЯ 2026",
     readTime: "6 МИН",
     category: "haircuts",
-    image: "/assets/works/work-1.jpg",
+    image: "/assets/blog/haircut-face-shape.png",
     excerpt: "Овальное, круглое, квадратное — какие стрижки работают лучше всего.",
     sections: [
       {
@@ -242,7 +242,7 @@ export const blogPosts: BlogPost[] = [
     date: "15 МАЯ 2026",
     readTime: "8 МИН",
     category: "style",
-    image: "/assets/works/work-2.jpg",
+    image: "/assets/blog/barbershop-myths.png",
     excerpt: "Разбираем популярные стереотипы и объясняем, чем барбершоп отличается от обычной парикмахерской.",
     sections: [
       {

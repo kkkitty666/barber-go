@@ -1,11 +1,11 @@
 .book-fab-link {
   position: fixed;
-  right: 1.25rem;
-  bottom: 1.25rem;
+  right: calc(1.25rem + var(--safe-right));
+  bottom: calc(1.25rem + var(--safe-bottom));
   z-index: 60;
-  display: block;
-  width: 11.5rem;
-  height: 2.875rem;
+  display: none;
+  width: 9.75rem;
+  height: 2.75rem;
   border-radius: 9999px;
   text-decoration: none;
   transition: transform 0.3s ease;
@@ -35,14 +35,17 @@
 }
 
 .book-fab-glass .glass-surface__content {
-  padding: 0 1.25rem;
+  padding: 0 0.85rem;
 }
 
 .book-fab-label {
-  font-family: var(--font-display), serif;
-  font-size: 0.62rem;
-  letter-spacing: 0.22em;
+  display: block;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   line-height: 1;
+  text-indent: 0.12em;
   color: rgba(232, 232, 232, 0.92);
   text-align: center;
   text-transform: uppercase;
@@ -52,21 +55,14 @@
 
 @media (min-width: 768px) {
   .book-fab-link {
-    right: 1.75rem;
-    bottom: 1.75rem;
-    width: 14rem;
-    height: 3rem;
+    display: block;
+    right: calc(1.75rem + var(--safe-right));
+    bottom: calc(1.75rem + var(--safe-bottom));
+    width: 10.75rem;
+    height: 2.75rem;
   }
 
   .book-fab-label {
-    font-size: 0.68rem;
-    letter-spacing: 0.24em;
-  }
-}
-
-@media (max-width: 767px) {
-  .book-fab-link {
-    bottom: 5rem;
-    width: min(11.5rem, calc(100vw - 2.5rem));
+    font-size: 0.62rem;
   }
 }

@@ -129,6 +129,8 @@ type GrainientProps = {
   color2?: string;
   color3?: string;
   className?: string;
+  persistent?: boolean;
+  onInitError?: () => void;
 };
 
 type GrainientContext = {
@@ -163,6 +165,8 @@ export default function Grainient({
   color2 = "#5227FF",
   color3 = "#B497CF",
   className = "",
+  persistent = false,
+  onInitError,
 }: GrainientProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -170,52 +174,66 @@ export default function Grainient({
     const container = containerRef.current;
     if (!container) return;
 
-    const renderer = new Renderer({
-      webgl: 2,
-      alpha: true,
-      antialias: false,
-      dpr: Math.min(window.devicePixelRatio || 1, 2),
-    });
+    let renderer: Renderer;
+
+    try {
+      renderer = new Renderer({
+        webgl: 2,
+        alpha: true,
+        antialias: false,
+        dpr: Math.min(window.devicePixelRatio || 1, 2),
+      });
+    } catch {
+      onInitError?.();
+      return;
+    }
 
     const gl = renderer.gl;
     const canvas = gl.canvas as HTMLCanvasElement;
     canvas.style.width = "100%";
     canvas.style.height = "100%";
     canvas.style.display = "block";
-    container.appendChild(canvas);
 
-    const geometry = new Triangle(gl);
-    const program = new Program(gl, {
-      vertex,
-      fragment,
-      uniforms: {
-        iTime: { value: 0 },
-        iResolution: { value: new Float32Array([1, 1]) },
-        uTimeSpeed: { value: 0.25 },
-        uColorBalance: { value: 0.0 },
-        uWarpStrength: { value: 1.0 },
-        uWarpFrequency: { value: 5.0 },
-        uWarpSpeed: { value: 2.0 },
-        uWarpAmplitude: { value: 50.0 },
-        uBlendAngle: { value: 0.0 },
-        uBlendSoftness: { value: 0.05 },
-        uRotationAmount: { value: 500.0 },
-        uNoiseScale: { value: 2.0 },
-        uGrainAmount: { value: 0.1 },
-        uGrainScale: { value: 2.0 },
-        uGrainAnimated: { value: 0.0 },
-        uContrast: { value: 1.5 },
-        uGamma: { value: 1.0 },
-        uSaturation: { value: 1.0 },
-        uCenterOffset: { value: new Float32Array([0, 0]) },
-        uZoom: { value: 0.9 },
-        uColor1: { value: new Float32Array([1, 1, 1]) },
-        uColor2: { value: new Float32Array([1, 1, 1]) },
-        uColor3: { value: new Float32Array([1, 1, 1]) },
-      },
-    });
+    let program: Program;
+    let mesh: Mesh;
 
-    const mesh = new Mesh(gl, { geometry, program });
+    try {
+      const geometry = new Triangle(gl);
+      program = new Program(gl, {
+        vertex,
+        fragment,
+        uniforms: {
+          iTime: { value: 0 },
+          iResolution: { value: new Float32Array([1, 1]) },
+          uTimeSpeed: { value: 0.25 },
+          uColorBalance: { value: 0.0 },
+          uWarpStrength: { value: 1.0 },
+          uWarpFrequency: { value: 5.0 },
+          uWarpSpeed: { value: 2.0 },
+          uWarpAmplitude: { value: 50.0 },
+          uBlendAngle: { value: 0.0 },
+          uBlendSoftness: { value: 0.05 },
+          uRotationAmount: { value: 500.0 },
+          uNoiseScale: { value: 2.0 },
+          uGrainAmount: { value: 0.1 },
+          uGrainScale: { value: 2.0 },
+          uGrainAnimated: { value: 0.0 },
+          uContrast: { value: 1.5 },
+          uGamma: { value: 1.0 },
+          uSaturation: { value: 1.0 },
+          uCenterOffset: { value: new Float32Array([0, 0]) },
+          uZoom: { value: 0.9 },
+          uColor1: { value: new Float32Array([1, 1, 1]) },
+          uColor2: { value: new Float32Array([1, 1, 1]) },
+          uColor3: { value: new Float32Array([1, 1, 1]) },
+        },
+      });
+      mesh = new Mesh(gl, { geometry, program });
+      container.appendChild(canvas);
+    } catch {
+      onInitError?.();
+      return;
+    }
     ctxMap.set(container, { renderer, program, mesh });
 
     const setSize = () => {
@@ -259,6 +277,7 @@ export default function Grainient({
 
     const io = new IntersectionObserver(
       ([entry]) => {
+        if (persistent) return;
         isVisible = entry.isIntersecting;
         if (isVisible) tryStart();
         else tryStop();
@@ -288,7 +307,7 @@ export default function Grainient({
         /* ignore */
       }
     };
-  }, []);
+  }, [onInitError, persistent]);
 
   useEffect(() => {
     const container = containerRef.current;

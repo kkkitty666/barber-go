@@ -21,7 +21,7 @@ export function WorksSection() {
           </p>
         </div>
 
-        <div className="works-gallery-shell relative mx-auto h-[70vh] min-h-[480px] max-h-[720px] w-full overflow-hidden">
+        <div className="works-gallery-shell relative mx-auto h-[52vh] min-h-[320px] max-h-[560px] w-full overflow-hidden md:h-[70vh] md:min-h-[480px] md:max-h-[720px]">
           <DomeGallery
             images={[...siteConfig.worksGallery]}
             fit={0.75}

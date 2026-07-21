@@ -36,10 +36,13 @@ async function tg(token, method, body = {}) {
 }
 
 async function forwardUpdate(update, secret) {
-  const url = `${LOCAL_APP_URL}/api/telegram/webhook?secret=${encodeURIComponent(secret)}`;
+  const url = `${LOCAL_APP_URL.replace(/\/$/, "")}/api/telegram/webhook`;
   const response = await fetch(url, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      "X-Telegram-Bot-Api-Secret-Token": secret,
+    },
     body: JSON.stringify(update),
   });
   if (!response.ok) {

@@ -29,7 +29,7 @@ function barberToChromaItem(
 
   return {
     id: barber.id,
-    image: barber.photo ?? "/assets/logo-shield.png",
+    image: barber.photo ?? "/assets/logo-pc-transparent.png",
     title: barber.name,
     subtitle: `${barber.role} · ${barber.experience}`,
     bio: barber.bio,

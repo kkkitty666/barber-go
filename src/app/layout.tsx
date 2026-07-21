@@ -1,8 +1,16 @@
-import type { Metadata } from "next";
-import { Cinzel, Inter, UnifrakturMaguntia } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Cinzel, Cinzel_Decorative, Montserrat, UnifrakturMaguntia } from "next/font/google";
 import "./globals.css";
+import { LocalBusinessJsonLd } from "@/components/LocalBusinessJsonLd";
 import { SiteBackground } from "@/components/SiteBackground";
+import { YandexMetrika } from "@/components/YandexMetrika";
 import { assets, siteConfig } from "@/config/site";
+
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "500", "600", "700"],
+});
 
 const cinzel = Cinzel({
   variable: "--font-cinzel",
@@ -10,9 +18,10 @@ const cinzel = Cinzel({
   weight: ["400", "600", "700", "900"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin", "cyrillic"],
+const cinzelDecorative = Cinzel_Decorative({
+  variable: "--font-cinzel-decorative",
+  subsets: ["latin"],
+  weight: ["400", "700", "900"],
 });
 
 const unifraktur = UnifrakturMaguntia({
@@ -38,6 +47,14 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#000000",
+  colorScheme: "dark",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -46,9 +63,12 @@ export default function RootLayout({
   return (
     <html
       lang="ru"
-      className={`${cinzel.variable} ${inter.variable} ${unifraktur.variable} h-full antialiased`}
+      data-bg-mode="grainient"
+      className={`${montserrat.variable} ${cinzel.variable} ${cinzelDecorative.variable} ${unifraktur.variable} h-full antialiased`}
     >
       <body className="relative min-h-full text-foreground">
+        <YandexMetrika />
+        <LocalBusinessJsonLd />
         <SiteBackground />
         <div className="relative z-10">{children}</div>
       </body>

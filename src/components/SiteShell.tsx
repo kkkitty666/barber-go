@@ -5,12 +5,18 @@ import { Header } from "./Header";
 import { MobileCta } from "./MobileCta";
 import "./CartPages.css";
 
-export function SiteShell({ children }: { children: React.ReactNode }) {
+export function SiteShell({
+  children,
+  mainClassName = "header-offset",
+}: {
+  children: React.ReactNode;
+  mainClassName?: string;
+}) {
   return (
     <CartProvider>
       <Header />
       <FloatingBookButton />
-      <main className="header-offset">{children}</main>
+      <main className={`mobile-main ${mainClassName}`.trim()}>{children}</main>
       <Footer />
       <MobileCta />
     </CartProvider>

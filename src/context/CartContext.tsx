@@ -20,14 +20,19 @@ export interface CartLine {
   quantity: number;
 }
 
+interface CartQuantityOptions {
+  inStock?: boolean;
+  maxQuantity?: number | null;
+}
+
 interface CartContextValue {
   items: CartLine[];
   itemCount: number;
   total: number;
   hydrated: boolean;
-  addItem: (slug: string, quantity?: number) => void;
+  addItem: (slug: string, quantity?: number, options?: CartQuantityOptions) => void;
   removeItem: (slug: string) => void;
-  setQuantity: (slug: string, quantity: number) => void;
+  setQuantity: (slug: string, quantity: number, options?: CartQuantityOptions) => void;
   clearCart: () => void;
 }
 
@@ -59,17 +64,23 @@ export function CartProvider({ children }: { children: ReactNode }) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
   }, [items, hydrated]);
 
-  const addItem = useCallback((slug: string, quantity = 1) => {
+  const addItem = useCallback((slug: string, quantity = 1, options?: CartQuantityOptions) => {
     const product = getProductBySlug(slug);
-    if (!product || !product.inStock) return;
+    const maxQuantity = options?.maxQuantity ?? null;
+    const canOrder = options?.inStock ?? product?.inStock ?? false;
+    if (!product || !canOrder || maxQuantity === 0) return;
 
     setItems((prev) => {
       const existing = prev.find((line) => line.slug === slug);
       if (existing) {
+        const nextQuantity =
+          maxQuantity === null ? existing.quantity + quantity : Math.min(existing.quantity + quantity, maxQuantity);
         return prev.map((line) =>
-          line.slug === slug ? { ...line, quantity: line.quantity + quantity } : line,
+          line.slug === slug ? { ...line, quantity: nextQuantity } : line,
         );
       }
+
+      const nextQuantity = maxQuantity === null ? quantity : Math.min(quantity, maxQuantity);
       return [
         ...prev,
         {
@@ -78,7 +89,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
           brand: product.brand,
           price: product.price,
           image: product.image,
-          quantity,
+          quantity: nextQuantity,
         },
       ];
     });
@@ -88,12 +99,22 @@ export function CartProvider({ children }: { children: ReactNode }) {
     setItems((prev) => prev.filter((line) => line.slug !== slug));
   }, []);
 
-  const setQuantity = useCallback((slug: string, quantity: number) => {
+  const setQuantity = useCallback((slug: string, quantity: number, options?: CartQuantityOptions) => {
+    if (options?.inStock === false || options?.maxQuantity === 0) {
+      setItems((prev) => prev.filter((line) => line.slug !== slug));
+      return;
+    }
     if (quantity <= 0) {
       setItems((prev) => prev.filter((line) => line.slug !== slug));
       return;
     }
-    setItems((prev) => prev.map((line) => (line.slug === slug ? { ...line, quantity } : line)));
+    const nextQuantity =
+      options?.maxQuantity === null || options?.maxQuantity === undefined
+        ? quantity
+        : Math.min(quantity, options.maxQuantity);
+    setItems((prev) =>
+      prev.map((line) => (line.slug === slug ? { ...line, quantity: nextQuantity } : line)),
+    );
   }, []);
 
   const clearCart = useCallback(() => setItems([]), []);

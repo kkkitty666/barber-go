@@ -5,6 +5,9 @@ import { PageSection } from "@/components/PageSection";
 import { SiteShell } from "@/components/SiteShell";
 import { getAllProductSlugs, getProductBySlug } from "@/config/products";
 import { pageSeo } from "@/config/site";
+import { getProductWithInventoryBySlug } from "@/lib/inventory";
+
+export const dynamic = "force-dynamic";
 
 interface ProductPageProps {
   params: Promise<{ slug: string }>;
@@ -32,7 +35,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const { slug } = await params;
-  const product = getProductBySlug(slug);
+  const product = await getProductWithInventoryBySlug(slug);
   if (!product) notFound();
 
   return (

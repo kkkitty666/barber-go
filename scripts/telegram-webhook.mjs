@@ -35,22 +35,44 @@ async function tg(token, method, body = {}) {
 
 async function main() {
   const env = loadEnvFile(ENV_PATH);
-  const { TELEGRAM_BOT_TOKEN, TELEGRAM_WEBHOOK_SECRET, NEXT_PUBLIC_APP_URL } = env;
+  const { TELEGRAM_BOT_TOKEN, TELEGRAM_WEBHOOK_SECRET, NEXT_PUBLIC_APP_URL, TELEGRAM_STAFF_CHAT_ID } = env;
 
   if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_WEBHOOK_SECRET || !NEXT_PUBLIC_APP_URL) {
     throw new Error("Нужны TELEGRAM_BOT_TOKEN, TELEGRAM_WEBHOOK_SECRET, NEXT_PUBLIC_APP_URL в .env.local");
   }
 
-  const webhookUrl = `${NEXT_PUBLIC_APP_URL.replace(/\/$/, "")}/api/telegram/webhook?secret=${TELEGRAM_WEBHOOK_SECRET}`;
+  const webhookUrl = `${NEXT_PUBLIC_APP_URL.replace(/\/$/, "")}/api/telegram/webhook`;
   await tg(TELEGRAM_BOT_TOKEN, "setWebhook", {
     url: webhookUrl,
+    secret_token: TELEGRAM_WEBHOOK_SECRET,
     allowed_updates: ["message", "callback_query"],
   });
 
   const info = await tg(TELEGRAM_BOT_TOKEN, "getWebhookInfo");
   console.log(`✓ Webhook: ${info.url}`);
+  console.log("✓ secret_token задан (проверка через заголовок X-Telegram-Bot-Api-Secret-Token)");
   if (info.last_error_message) {
     console.warn(`⚠ ${info.last_error_message}`);
+  }
+
+  await tg(TELEGRAM_BOT_TOKEN, "setMyCommands", {
+    commands: [
+      { command: "start", description: "Подключить уведомления о заказах" },
+      { command: "help", description: "Как пользоваться ботом" },
+    ],
+  });
+
+  if (TELEGRAM_STAFF_CHAT_ID) {
+    await tg(TELEGRAM_BOT_TOKEN, "setMyCommands", {
+      commands: [
+        { command: "stock", description: "Выбрать товар и изменить остаток" },
+        { command: "lowstock", description: "Товары с остатком 3 шт. и меньше" },
+        { command: "cancel", description: "Отменить ввод количества" },
+        { command: "help", description: "Показать все команды" },
+      ],
+      scope: { type: "chat", chat_id: Number(TELEGRAM_STAFF_CHAT_ID) },
+    });
+    console.log("✓ Подсказки команд обновлены");
   }
 }
 

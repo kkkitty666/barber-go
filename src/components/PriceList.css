@@ -82,10 +82,28 @@
   position: relative;
   z-index: 1;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.65rem;
-  padding: 0.55rem 0.7rem;
+  padding: 0.7rem 0.7rem;
   border-bottom: 1px solid rgba(192, 192, 192, 0.1);
+}
+
+.price-list-row-main .price-list-icon {
+  margin-top: 0.1rem;
+}
+
+.price-list-row-main .price-list-price {
+  margin-top: 0;
+}
+
+.price-list-row-side {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3rem;
+  margin-top: 0.05rem;
+  min-width: 4.75rem;
 }
 
 .price-list-row:last-child .price-list-row-main {
@@ -138,7 +156,23 @@
   letter-spacing: 0.06em;
   color: var(--gold-light);
   text-transform: uppercase;
+  overflow-wrap: anywhere;
   transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.price-list-subtitle {
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  color: rgba(192, 192, 192, 0.72);
+  text-transform: uppercase;
+}
+
+.price-list-desc {
+  margin: 0.15rem 0 0;
+  max-width: 36rem;
+  font-size: 0.68rem;
+  line-height: 1.45;
+  color: rgba(232, 232, 232, 0.52);
 }
 
 .price-list-row:hover .price-list-name,
@@ -182,11 +216,11 @@
 }
 
 .price-list-badge {
-  position: absolute;
-  top: 0.35rem;
-  right: 0.55rem;
-  z-index: 2;
-  padding: 0.1rem 0.35rem;
+  position: static;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.12rem 0.4rem;
   border-radius: 9999px;
   border: 1px solid rgba(192, 192, 192, 0.4);
   font-size: 0.5rem;
@@ -223,7 +257,8 @@
 }
 
 .price-list-cta {
-  min-width: 12rem;
+  min-width: 0;
+  padding-inline: 1.35rem;
 }
 
 @media (min-width: 640px) {

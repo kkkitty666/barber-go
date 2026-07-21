@@ -23,7 +23,7 @@ function MessengerIcon({ name }: { name: string }) {
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-border bg-background-secondary/80 pb-24 md:pb-8">
+    <footer className="relative border-t border-border bg-background-secondary/80 pb-[calc(var(--mobile-bar-height)+var(--safe-bottom)+1.5rem)] md:pb-8">
       <div className="section-padding !py-12">
         <div className="mx-auto max-w-7xl">
           <div className="mb-8 flex flex-col items-center gap-6 md:flex-row md:justify-between">
@@ -52,9 +52,9 @@ export function Footer() {
                     href={m.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="icon-badge h-11 w-11 transition-all hover:border-gold hover:text-gold-light"
-                    title={m.name}
-                    aria-label={m.name}
+                    className="icon-badge icon-badge--inverse h-11 w-11"
+                    title={"hint" in m && m.hint ? m.hint : m.name}
+                    aria-label={"hint" in m && m.hint ? m.hint : m.name}
                   >
                     <MessengerIcon name={m.name} />
                   </a>
@@ -67,7 +67,15 @@ export function Footer() {
 
           <div className="flex flex-col items-center justify-between gap-4 text-xs text-foreground-muted md:flex-row">
             <p>© {new Date().getFullYear()} {siteConfig.name}. Все права защищены.</p>
-            <p>{siteConfig.fullAddress} · {siteConfig.hours}</p>
+            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+              <a href="/politika-konfidencialnosti" className="hover:text-gold">
+                Политика конфиденциальности
+              </a>
+              <a href="/oferta" className="hover:text-gold">
+                Оферта
+              </a>
+              <p>{siteConfig.fullAddress} · {siteConfig.hours}</p>
+            </div>
           </div>
         </div>
       </div>

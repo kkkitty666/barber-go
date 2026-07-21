@@ -118,8 +118,9 @@ export function Contact() {
                     href={m.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="icon-badge transition-opacity hover:opacity-80"
-                    aria-label={m.name}
+                    className="icon-badge h-11 w-11"
+                    title={"hint" in m && m.hint ? m.hint : m.name}
+                    aria-label={"hint" in m && m.hint ? m.hint : m.name}
                   >
                     <MessengerIcon name={m.name} />
                   </a>
@@ -128,7 +129,7 @@ export function Contact() {
             </div>
           </CanvasFrame>
 
-          <div className="canvas-frame relative min-h-[360px] overflow-hidden lg:min-h-[420px]">
+          <div className="canvas-frame contact-map-frame relative h-[360px] overflow-hidden lg:h-[420px]">
             <YandexMapEmbed />
           </div>
         </div>

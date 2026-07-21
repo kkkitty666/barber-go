@@ -4,7 +4,7 @@ import { OrnamentDivider } from "./OrnamentDivider";
 
 export function About() {
   return (
-    <section id="about" className="section-padding noise-overlay">
+    <section id="about" className="section-padding noise-overlay mobile-section-safe">
       <div className="relative z-10 mx-auto max-w-3xl">
         <div className="mb-12 text-center">
           <h2 className="font-display mb-4 text-3xl tracking-[0.3em] text-gold md:text-4xl">

@@ -3,16 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { blogPosts } from "@/config/blog";
-import { assets, siteConfig } from "@/config/site";
-import { CornerFlourish } from "./DecorativeElements";
-import { PhotoWallpaperBlend } from "./PhotoWallpaperBlend";
+import { siteConfig } from "@/config/site";
+import { BlogBrandPixelCard } from "./BlogBrandPixelCard";
 import "./BlogPage.css";
-
-const categoryLabels: Record<string, string> = {
-  barbershop: "БАРБЕРШОП",
-  haircuts: "МУЖСКИЕ СТРИЖКИ",
-  style: "СТИЛЬ",
-};
 
 function ClockIcon() {
   return (
@@ -29,31 +22,12 @@ export function BlogPageContent() {
 
   return (
     <div className="blog-page">
-      <section className="blog-hero section-photo-blend">
-        <PhotoWallpaperBlend edges={["bottom"]} className="blog-hero-blend">
-          <Image
-            src={featuredPost.image}
-            alt=""
-            fill
-            className="blog-hero-bg object-cover"
-            priority
-            sizes="100vw"
-          />
-        </PhotoWallpaperBlend>
-        <div className="blog-hero-overlay" />
-
+      <section className="blog-hero">
         <div className="blog-hero-frame-wrap">
           <div className="blog-hero-frame">
-            <CornerFlourish position="top-left" className="left-0 top-0" />
-            <CornerFlourish position="top-right" className="right-0 top-0" />
-            <CornerFlourish position="bottom-left" className="bottom-0 left-0" />
-            <CornerFlourish position="bottom-right" className="bottom-0 right-0" />
-
             <div className="blog-hero-frame-inner">
-              <div>
-                <h1 className="blog-hero-title">БЛОГ PC БАРБЕРШОП</h1>
-                <p className="blog-hero-subtitle">{siteConfig.blogPage.subtitle}</p>
-              </div>
+              <h1 className="blog-hero-title">БЛОГ PC БАРБЕРШОП</h1>
+              <p className="blog-hero-subtitle">{siteConfig.blogPage.subtitle}</p>
             </div>
           </div>
         </div>
@@ -61,10 +35,6 @@ export function BlogPageContent() {
 
       <section className="blog-content-section section-padding !pt-10 !pb-6">
         <div className="mx-auto max-w-7xl">
-          <div className="services-banner blog-category-ribbon">
-            {categoryLabels[featuredPost.category] ?? "БЛОГ"}
-          </div>
-
           <div className="blog-featured-grid">
             <Link href={`/blog/${featuredPost.slug}`} className="blog-featured-card">
               <Image
@@ -90,17 +60,8 @@ export function BlogPageContent() {
               </div>
             </Link>
 
-            <aside className="blog-brand-card canvas-frame">
-              <Image
-                src={assets.logoGold}
-                alt={siteConfig.name}
-                width={120}
-                height={120}
-                className="blog-brand-logo"
-              />
-              <p className="blog-brand-name">{siteConfig.name}</p>
-              <p className="blog-brand-tagline">{siteConfig.blogPage.brandTagline}</p>
-              <p className="blog-brand-motto">{siteConfig.motto}</p>
+            <aside className="blog-brand-aside">
+              <BlogBrandPixelCard />
             </aside>
           </div>
         </div>

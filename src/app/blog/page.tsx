@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   return (
-    <SiteShell>
+    <SiteShell mainClassName="">
       <BlogPageContent />
     </SiteShell>
   );

@@ -1,22 +1,21 @@
 import { siteConfig } from "@/config/site";
 
-/** Yandex Maps widget — lon,lat order in `ll` and `pt`. */
-export function buildYandexMapWidgetUrl() {
+/** Static map image — reliably renders in all browsers (unlike iframe widget). */
+export function buildYandexStaticMapUrl(width = 650, height = 450) {
   const { lon, lat } = siteConfig.mapCoords;
-  const ll = `${lon},${lat}`;
+  const w = Math.min(650, Math.max(200, Math.round(width)));
+  const h = Math.min(450, Math.max(150, Math.round(height)));
   const params = new URLSearchParams({
-    ll,
+    ll: `${lon},${lat}`,
+    size: `${w},${h}`,
     z: String(siteConfig.mapZoom),
-    pt: `${ll},pm2rdm`,
     l: "map",
+    pt: `${lon},${lat},pm2rdm`,
+    lang: "ru_RU",
   });
-  return `https://yandex.ru/map-widget/v1/?${params.toString()}`;
+  return `https://static-maps.yandex.ru/1.x/?${params.toString()}`;
 }
 
 export function buildYandexMapExternalUrl() {
-  return `https://yandex.ru/maps/?${new URLSearchParams({
-    ll: `${siteConfig.mapCoords.lon},${siteConfig.mapCoords.lat}`,
-    z: String(siteConfig.mapZoom),
-    text: siteConfig.mapsQuery,
-  }).toString()}`;
+  return siteConfig.mapsUrl;
 }
