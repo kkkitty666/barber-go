@@ -1,6 +1,6 @@
 export const assets = {
-  logoGold: "/assets/logo-pc-transparent.png",
-  logoShield: "/assets/logo-pc-transparent.png",
+  logoGold: "/assets/logo-pc.png",
+  logoShield: "/assets/logo-pc.png",
   bookingQr: "/assets/booking-qr.png",
 } as const;
 
@@ -306,7 +306,7 @@ export const siteConfig = {
       name: "Роман",
       role: "Барбер",
       experience: "4 года опыта",
-      photo: "/assets/logo-pc-transparent.png",
+      photo: "/assets/logo-pc.png",
       bio: "Сильные стороны — классика и аккуратный фейд. Любит чёткие линии, спокойный сервис и стрижку «под задачу»: от офиса до выходного образа.",
       specialties: ["Компаньон", "Босс", "Строгий контур", "Кодекс"],
     },
@@ -315,7 +315,7 @@ export const siteConfig = {
       name: "Артём",
       role: "Барбер",
       experience: "3 года опыта",
-      photo: "/assets/logo-pc-transparent.png",
+      photo: "/assets/logo-pc.png",
       bio: "Работает с длинным стилем и текстурой, помогает с укладкой и подбором домашнего ухода. Комфортно принимает и взрослых, и юных гостей.",
       specialties: ["Дипломат", "Преемник", "Чистая репутация", "Магнат"],
     },

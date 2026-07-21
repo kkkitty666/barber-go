@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { assets, siteConfig } from "@/config/site";
 import { LandscapeFooter } from "./DecorativeElements";
 import { OrnamentDivider } from "./OrnamentDivider";
@@ -28,12 +27,14 @@ export function Footer() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-8 flex flex-col items-center gap-6 md:flex-row md:justify-between">
             <div className="flex items-center gap-4">
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src={assets.logoGold}
                 alt={siteConfig.name}
                 width={64}
                 height={64}
                 className="h-14 w-14 object-contain"
+                decoding="async"
               />
               <div>
                 <p className="font-display text-sm tracking-[0.2em] text-gold">{siteConfig.name}</p>

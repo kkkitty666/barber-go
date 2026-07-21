@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { assets, siteConfig } from "@/config/site";
 import PixelCard from "./PixelCard";
 import "./BlogBrandPixelCard.css";
@@ -8,12 +7,14 @@ export function BlogBrandPixelCard() {
     <PixelCard variant="silver" className="blog-brand-pixel-card">
       <div className="pixel-card__content blog-brand-pixel-card__content">
         <div className="blog-brand-pixel-card__logo-wrap">
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src={assets.logoShield}
             alt={siteConfig.name}
             width={132}
             height={132}
             className="blog-brand-pixel-card__logo"
+            decoding="async"
           />
         </div>
 
