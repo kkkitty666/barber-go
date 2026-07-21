@@ -40,6 +40,10 @@ export const siteConfig = {
   messengers: [
     { name: "Telegram", url: "https://t.me/RS_Ilia" },
     { name: "WhatsApp", url: "https://wa.me/79934582077" },
+    {
+      name: "Instagram",
+      url: "https://www.instagram.com/rs_rebrand_yourself/",
+    },
     // Max: задайте NEXT_PUBLIC_MAX_URL=https://max.ru/u/... иначе — главная с подсказкой по номеру.
     {
       name: "Max",
@@ -49,6 +53,11 @@ export const siteConfig = {
   ],
 
   social: [
+    {
+      id: "instagram",
+      label: "Instagram",
+      url: "https://www.instagram.com/rs_rebrand_yourself/",
+    },
     {
       id: "max",
       label: "Max",
