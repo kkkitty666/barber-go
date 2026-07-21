@@ -130,6 +130,8 @@ type GrainientProps = {
   color3?: string;
   className?: string;
   persistent?: boolean;
+  /** Cap device pixel ratio (use 1 on mobile for battery/perf). */
+  maxDpr?: number;
   onInitError?: () => void;
 };
 
@@ -166,6 +168,7 @@ export default function Grainient({
   color3 = "#B497CF",
   className = "",
   persistent = false,
+  maxDpr = 2,
   onInitError,
 }: GrainientProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -181,7 +184,7 @@ export default function Grainient({
         webgl: 2,
         alpha: true,
         antialias: false,
-        dpr: Math.min(window.devicePixelRatio || 1, 2),
+        dpr: Math.min(window.devicePixelRatio || 1, Math.max(1, maxDpr)),
       });
     } catch {
       onInitError?.();
