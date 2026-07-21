@@ -98,7 +98,7 @@ export function Header() {
         }`}
       >
         <header className={`site-header${menuOpen ? " site-header--menu-open" : ""}`}>
-          <div className="site-header__inner mx-auto grid max-w-[90rem] grid-cols-[1fr_auto_1fr] items-center px-3 md:px-6">
+          <div className="site-header__inner mx-auto grid max-w-[90rem] grid-cols-[auto_1fr] items-center gap-2 px-3 md:px-6 lg:grid-cols-[1fr_auto_1fr] lg:gap-4">
             <nav className="header-nav-left hidden items-center justify-end lg:flex">
               {siteConfig.navLeft.map((item) => (
                 <NavLink
@@ -110,7 +110,7 @@ export function Header() {
               ))}
             </nav>
 
-            <div className="header-logo-wrap flex justify-center">
+            <div className="header-logo-wrap flex justify-start lg:col-start-2 lg:justify-center">
               <Link
                 href="/"
                 className={`header-logo nav-link flex flex-col items-center justify-center py-1 ${
@@ -130,23 +130,21 @@ export function Header() {
               </Link>
             </div>
 
-            <nav className="header-nav-right hidden items-center justify-start gap-4 lg:flex">
-              <ShopHeaderActions />
-              {siteConfig.navRight.map((item) => (
-                <NavLink
-                  key={item.href}
-                  href={item.href}
-                  label={item.label}
-                  active={isActive(item.href)}
-                />
-              ))}
-            </nav>
-
-            <div className="col-start-3 flex items-center justify-end gap-2 lg:hidden">
+            <div className="flex items-center justify-end gap-2 lg:col-start-3 lg:gap-4">
+              <nav className="header-nav-right hidden items-center justify-start gap-4 lg:flex">
+                {siteConfig.navRight.map((item) => (
+                  <NavLink
+                    key={item.href}
+                    href={item.href}
+                    label={item.label}
+                    active={isActive(item.href)}
+                  />
+                ))}
+              </nav>
               <ShopHeaderActions />
               <button
                 type="button"
-                className="header-menu-button flex min-h-11 min-w-11 items-center justify-center rounded-full"
+                className="header-menu-button flex min-h-11 min-w-11 items-center justify-center rounded-full lg:hidden"
                 onClick={() => setMenuOpen((open) => !open)}
                 aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"}
                 aria-expanded={menuOpen}
