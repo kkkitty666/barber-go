@@ -49,7 +49,7 @@ export function Contact() {
   const mapsLink = buildYandexMapExternalUrl();
 
   return (
-    <section className="section-padding bg-background-secondary/40">
+    <section className="section-padding">
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="mb-12 text-center">
           <h2 className="font-display mb-4 text-4xl tracking-[0.28em] text-gold md:text-5xl">
