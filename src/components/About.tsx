@@ -7,7 +7,7 @@ export function About() {
     <section id="about" className="section-padding noise-overlay mobile-section-safe">
       <div className="relative z-10 mx-auto max-w-3xl">
         <div className="mb-12 text-center">
-          <h2 className="font-display mb-4 text-3xl tracking-[0.3em] text-gold md:text-4xl">
+          <h2 className="font-display mb-4 text-4xl tracking-[0.28em] text-gold md:text-5xl">
             {siteConfig.about.title}
           </h2>
           <OrnamentDivider label={siteConfig.motto} />

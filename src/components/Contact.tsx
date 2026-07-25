@@ -23,7 +23,7 @@ function ContactRow({
     <>
       <div className="icon-badge">{icon}</div>
       <div>
-        <p className="font-display mb-1 text-[10px] tracking-[0.25em] text-gold uppercase">
+        <p className="font-display mb-1 text-[13px] tracking-[0.22em] text-gold uppercase">
           {label}
         </p>
         <p className="text-base text-foreground">{value}</p>
@@ -52,7 +52,7 @@ export function Contact() {
     <section className="section-padding bg-background-secondary/40">
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="mb-12 text-center">
-          <h2 className="font-display mb-4 text-3xl tracking-[0.3em] text-gold md:text-4xl">
+          <h2 className="font-display mb-4 text-4xl tracking-[0.28em] text-gold md:text-5xl">
             КОНТАКТЫ
           </h2>
           <OrnamentDivider />
@@ -91,7 +91,7 @@ export function Contact() {
               }
             />
             <div className="py-4">
-              <p className="font-display mb-3 text-[10px] tracking-[0.25em] text-gold uppercase">
+              <p className="font-display mb-3 text-[13px] tracking-[0.22em] text-gold uppercase">
                 Мессенджеры
               </p>
               <div className="flex gap-3">

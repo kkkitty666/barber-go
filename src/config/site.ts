@@ -145,25 +145,25 @@ export const siteConfig = {
   navLeft: [
     { label: "Услуги", href: "/uslugi" },
     { label: "Косметика", href: "/kosmetika" },
-    { label: "Барбер", href: "/barbery" },
     { label: "Акции", href: "/akcii" },
+    { label: "Блог", href: "/blog" },
   ],
 
   navRight: [
-    { label: "Наши работы", href: "/raboty" },
+    { label: "Барберы", href: "/barbery" },
+    { label: "Работы", href: "/raboty" },
     { label: "Отзывы", href: "/otzyvy" },
-    { label: "Блог", href: "/blog" },
     { label: "Контакты", href: "/kontakty" },
   ],
 
   nav: [
     { label: "Услуги", href: "/uslugi" },
     { label: "Косметика", href: "/kosmetika" },
-    { label: "Барбер", href: "/barbery" },
     { label: "Акции", href: "/akcii" },
-    { label: "Наши работы", href: "/raboty" },
-    { label: "Отзывы", href: "/otzyvy" },
     { label: "Блог", href: "/blog" },
+    { label: "Барберы", href: "/barbery" },
+    { label: "Работы", href: "/raboty" },
+    { label: "Отзывы", href: "/otzyvy" },
     { label: "Контакты", href: "/kontakty" },
   ],
 

@@ -6,7 +6,7 @@
 .order-history__title {
   margin: 0 0 0.5rem;
   font-family: var(--font-display), serif;
-  font-size: clamp(1.2rem, 3vw, 1.65rem);
+  font-size: clamp(1.38rem, 3vw, 1.897rem);
   letter-spacing: 0.1em;
   color: var(--gold-light);
   text-transform: uppercase;
@@ -14,7 +14,7 @@
 
 .order-history__lead {
   margin: 0 0 1.25rem;
-  font-size: 0.88rem;
+  font-size: 1.056rem;
   line-height: 1.6;
   color: var(--foreground-muted);
 }
@@ -36,7 +36,7 @@
 }
 
 .order-history__field span {
-  font-size: 0.62rem;
+  font-size: 0.744rem;
   letter-spacing: 0.14em;
   color: rgba(192, 192, 192, 0.75);
   text-transform: uppercase;
@@ -53,7 +53,7 @@
 .order-history__status,
 .order-history__error,
 .order-history__empty p {
-  font-size: 0.88rem;
+  font-size: 1.056rem;
   color: var(--foreground-muted);
 }
 
@@ -93,7 +93,7 @@
 .order-history-card__id {
   margin: 0;
   font-family: var(--font-display), serif;
-  font-size: 0.82rem;
+  font-size: 0.984rem;
   letter-spacing: 0.1em;
   color: var(--gold);
   text-transform: uppercase;
@@ -101,7 +101,7 @@
 
 .order-history-card__date {
   margin: 0.2rem 0 0;
-  font-size: 0.72rem;
+  font-size: 0.864rem;
   color: var(--foreground-muted);
 }
 
@@ -109,7 +109,7 @@
   align-self: flex-start;
   padding: 0.25rem 0.55rem;
   border-radius: 999px;
-  font-size: 0.58rem;
+  font-size: 0.696rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   border: 1px solid rgba(192, 192, 192, 0.35);
@@ -127,19 +127,19 @@
 }
 
 .order-history-card__items li {
-  font-size: 0.8rem;
+  font-size: 0.96rem;
   line-height: 1.5;
   color: var(--foreground-muted);
 }
 
 .order-history-card__total {
   margin: 0;
-  font-size: 0.88rem;
+  font-size: 1.056rem;
   color: var(--gold-light);
 }
 
 .order-history-card__ready {
   margin: 0.35rem 0 0;
-  font-size: 0.72rem;
+  font-size: 0.864rem;
   color: rgba(192, 192, 192, 0.8);
 }

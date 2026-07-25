@@ -45,7 +45,7 @@
   height: 2.75rem;
   border: 0;
   background: transparent;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   line-height: 1;
   color: rgba(192, 192, 192, 0.7);
   cursor: pointer;
@@ -59,7 +59,7 @@
 
 .first-visit-promo__label {
   margin: 0 0 0.75rem;
-  font-size: 0.62rem;
+  font-size: 0.744rem;
   letter-spacing: 0.22em;
   color: rgba(192, 192, 192, 0.75);
   text-transform: uppercase;
@@ -68,7 +68,7 @@
 .first-visit-promo__title {
   margin: 0;
   font-family: var(--font-display), serif;
-  font-size: clamp(1.35rem, 4vw, 1.75rem);
+  font-size: clamp(1.553rem, 4vw, 2.012rem);
   line-height: 1.2;
   letter-spacing: 0.06em;
   color: #fff;
@@ -83,7 +83,7 @@
 
 .first-visit-promo__text {
   margin: 1rem 0 0.85rem;
-  font-size: 0.88rem;
+  font-size: 1.056rem;
   line-height: 1.65;
   color: var(--foreground-muted);
 }
@@ -91,7 +91,7 @@
 .first-visit-promo__terms {
   margin: 0 0 1.1rem;
   padding-left: 1.1rem;
-  font-size: 0.72rem;
+  font-size: 0.864rem;
   line-height: 1.55;
   color: rgba(232, 232, 232, 0.65);
 }

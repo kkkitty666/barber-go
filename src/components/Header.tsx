@@ -3,28 +3,33 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { assets, siteConfig } from "@/config/site";
 import { useHeaderVisibility } from "@/hooks/useHeaderVisibility";
 import { ShopHeaderActions } from "./CartButton";
 import "./Header.css";
 
+const SHOP_DOCK_GAP = 10;
+const HEADER_TRANSITION_MS = 320;
+
 function NavLink({
   href,
   label,
   active,
+  className = "",
 }: {
   href: string;
   label: string;
   active: boolean;
+  className?: string;
 }) {
   return (
     <Link
       href={href}
-      className={`nav-link font-display text-[10px] tracking-[0.22em] uppercase xl:text-[11px] ${
+      className={`nav-link whitespace-nowrap font-body text-[12px] font-semibold tracking-[0.08em] uppercase xl:text-[13px] xl:tracking-[0.1em] ${
         active ? "text-gold" : "text-foreground-muted hover:text-gold"
-      }`}
+      } ${className}`}
     >
       {label}
     </Link>
@@ -34,8 +39,11 @@ function NavLink({
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [dockTop, setDockTop] = useState(72);
   const pathname = usePathname();
   const headerVisible = useHeaderVisibility();
+  const headerBarRef = useRef<HTMLElement>(null);
+  const raisedTopRef = useRef(12);
 
   const isActive = (href: string) => {
     if (href.includes("#")) return false;
@@ -44,6 +52,51 @@ export function Header() {
   };
 
   const closeMenu = () => setMenuOpen(false);
+
+  useLayoutEffect(() => {
+    const headerBar = headerBarRef.current;
+    if (!headerBar) return;
+
+    let raf = 0;
+    let timeoutId = 0;
+
+    const syncDock = () => {
+      const rect = headerBar.getBoundingClientRect();
+      if (rect.top > 0 || headerVisible) {
+        raisedTopRef.current = Math.max(8, Math.round(rect.top));
+      }
+      const belowHeader = Math.round(rect.bottom + SHOP_DOCK_GAP);
+      setDockTop(Math.max(belowHeader, raisedTopRef.current));
+    };
+
+    const trackTransition = () => {
+      const started = performance.now();
+      const tick = (now: number) => {
+        syncDock();
+        if (now - started < HEADER_TRANSITION_MS) {
+          raf = requestAnimationFrame(tick);
+        }
+      };
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(tick);
+      window.clearTimeout(timeoutId);
+      timeoutId = window.setTimeout(syncDock, HEADER_TRANSITION_MS + 40);
+    };
+
+    syncDock();
+    trackTransition();
+
+    const onResize = () => syncDock();
+    window.addEventListener("resize", onResize);
+    window.visualViewport?.addEventListener("resize", onResize);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      window.clearTimeout(timeoutId);
+      window.removeEventListener("resize", onResize);
+      window.visualViewport?.removeEventListener("resize", onResize);
+    };
+  }, [headerVisible]);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -99,9 +152,12 @@ export function Header() {
           headerVisible ? "translate-y-0" : "-translate-y-full"
         }`}
       >
-        <header className={`site-header${menuOpen ? " site-header--menu-open" : ""}`}>
-          <div className="site-header__inner mx-auto grid max-w-[90rem] grid-cols-[auto_1fr] items-center gap-2 px-3 md:px-6 lg:grid-cols-[1fr_auto_1fr] lg:gap-4">
-            <nav className="header-nav-left hidden items-center justify-end lg:flex">
+        <header
+          ref={headerBarRef}
+          className={`site-header${menuOpen ? " site-header--menu-open" : ""}`}
+        >
+          <div className="site-header__inner mx-auto flex max-w-[90rem] items-center px-3 md:px-5 xl:px-7">
+            <nav className="header-nav-left hidden min-w-0 flex-1 items-center justify-end gap-2 pr-4 xl:gap-3.5 xl:pr-6 lg:flex">
               {siteConfig.navLeft.map((item) => (
                 <NavLink
                   key={item.href}
@@ -112,7 +168,7 @@ export function Header() {
               ))}
             </nav>
 
-            <div className="header-logo-wrap flex justify-start lg:col-start-2 lg:justify-center">
+            <div className="header-logo-wrap flex shrink-0 justify-start lg:justify-center">
               <Link
                 href="/"
                 className={`header-logo nav-link flex flex-col items-center justify-center py-1 ${
@@ -131,8 +187,8 @@ export function Header() {
               </Link>
             </div>
 
-            <div className="flex items-center justify-end gap-2 lg:col-start-3 lg:gap-4">
-              <nav className="header-nav-right hidden items-center justify-start gap-4 lg:flex">
+            <div className="header-right ml-auto flex min-w-0 flex-1 items-center gap-3 lg:ml-0">
+              <nav className="header-nav-right hidden min-w-0 flex-1 items-center justify-start gap-2 pl-4 xl:gap-3.5 xl:pl-6 lg:flex">
                 {siteConfig.navRight.map((item) => (
                   <NavLink
                     key={item.href}
@@ -142,10 +198,9 @@ export function Header() {
                   />
                 ))}
               </nav>
-              <ShopHeaderActions />
               <button
                 type="button"
-                className="header-menu-button flex min-h-11 min-w-11 items-center justify-center rounded-full lg:hidden"
+                className="header-menu-button ml-auto flex min-h-11 min-w-11 items-center justify-center rounded-full lg:hidden"
                 onClick={() => setMenuOpen((open) => !open)}
                 aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"}
                 aria-expanded={menuOpen}
@@ -166,6 +221,14 @@ export function Header() {
             </div>
           </div>
         </header>
+      </div>
+
+      <div
+        className="header-shop-dock"
+        style={{ top: dockTop }}
+        aria-label="Заказы и корзина"
+      >
+        <ShopHeaderActions />
       </div>
 
       {mobileMenu}

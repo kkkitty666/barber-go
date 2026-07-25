@@ -41,7 +41,7 @@
 .book-fab-label {
   display: block;
   font-family: var(--font-body), system-ui, sans-serif;
-  font-size: 0.58rem;
+  font-size: 0.696rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   line-height: 1;
@@ -63,6 +63,6 @@
   }
 
   .book-fab-label {
-    font-size: 0.62rem;
+    font-size: 0.744rem;
   }
 }

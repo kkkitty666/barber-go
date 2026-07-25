@@ -52,11 +52,11 @@ export default async function ReviewsPage() {
               href={reviews.ctaUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-secondary text-xs"
+              className="btn-secondary text-sm"
             >
               Оставить отзыв на Яндекс.Картах
             </a>
-            <Link href="/" className="btn-secondary text-xs">
+            <Link href="/" className="btn-secondary text-sm">
               На главную
             </Link>
           </div>

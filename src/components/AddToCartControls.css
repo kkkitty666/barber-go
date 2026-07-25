@@ -24,7 +24,7 @@
   border: 0;
   background: transparent;
   color: var(--gold);
-  font-size: 0.9rem;
+  font-size: 1.08rem;
   line-height: 1;
   cursor: pointer;
 }
@@ -41,7 +41,7 @@
   border: 0;
   background: transparent;
   font-family: var(--font-body), system-ui, sans-serif;
-  font-size: 0.74rem;
+  font-size: 0.888rem;
   line-height: 1;
   color: var(--foreground);
   text-align: center;
@@ -63,8 +63,9 @@
   border: 1px solid rgba(192, 192, 192, 0.45);
   border-radius: var(--radius-sm, 0.45rem);
   background: transparent;
-  font-family: var(--font-display), serif;
-  font-size: 0.58rem;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.696rem;
+  font-weight: 600;
   letter-spacing: 0.12em;
   color: var(--gold);
   text-transform: uppercase;
@@ -82,7 +83,7 @@
 }
 
 .add-to-cart__in-cart-label {
-  font-size: 0.58rem;
+  font-size: 0.696rem;
   letter-spacing: 0.1em;
   color: rgba(192, 192, 192, 0.9);
   text-transform: uppercase;
@@ -94,7 +95,7 @@
 
 .add-to-cart--compact .add-to-cart__btn {
   padding: 0.28rem 0.55rem;
-  font-size: 0.55rem;
+  font-size: 0.66rem;
 }
 
 .add-to-cart--in-cart {
@@ -126,7 +127,7 @@
 .add-to-cart__qty--card button {
   width: 2.25rem;
   height: 2.25rem;
-  font-size: 0.95rem;
+  font-size: 1.14rem;
   touch-action: manipulation;
 }
 
@@ -134,7 +135,7 @@
   width: 1.7rem;
   min-width: 1.7rem;
   min-height: 2.25rem;
-  font-size: 0.78rem;
+  font-size: 0.936rem;
 }
 
 .add-to-cart__btn--card {
@@ -144,8 +145,9 @@
   border: 1px solid var(--gold);
   border-radius: var(--radius-sm, 0.45rem);
   background: color-mix(in srgb, var(--gold) 10%, transparent);
-  font-family: var(--font-display), serif;
-  font-size: 0.52rem;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.624rem;
+  font-weight: 600;
   letter-spacing: 0.12em;
   color: var(--gold);
   text-transform: uppercase;
@@ -171,8 +173,9 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-sm, 0.45rem);
   background: rgba(192, 192, 192, 0.06);
-  font-family: var(--font-display), serif;
-  font-size: 0.5rem;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
   letter-spacing: 0.1em;
   color: rgba(192, 192, 192, 0.9);
   text-align: center;

@@ -3,14 +3,14 @@ import { siteConfig } from "@/config/site";
 export function MobileCta() {
   return (
     <div className="mobile-cta fixed right-0 bottom-0 left-0 z-40 grid grid-cols-2 gap-2 border-t border-border bg-black md:hidden">
-      <a href={`tel:+${siteConfig.phoneRaw}`} className="btn-secondary mobile-cta__button text-xs">
+      <a href={`tel:+${siteConfig.phoneRaw}`} className="btn-secondary mobile-cta__button text-sm">
         Позвонить
       </a>
       <a
         href={siteConfig.bookingUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="btn-primary mobile-cta__button text-xs"
+        className="btn-primary mobile-cta__button text-sm"
       >
         Записаться
       </a>

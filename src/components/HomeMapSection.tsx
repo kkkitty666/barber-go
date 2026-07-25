@@ -15,13 +15,13 @@ export function HomeMapSection() {
               <CornerFlourish position="top-left" className="top-3 left-3 z-10" />
               <CornerFlourish position="bottom-left" className="bottom-3 left-3 z-10" />
 
-              <h2 className="font-display mb-8 text-2xl tracking-[0.2em] text-white uppercase md:text-3xl">
+              <h2 className="font-display mb-8 text-3xl tracking-[0.18em] text-white uppercase md:text-4xl">
                 Контакты
               </h2>
 
               <a
                 href={`tel:+${siteConfig.phoneRaw}`}
-                className="mb-6 font-display text-2xl tracking-wide text-white transition-opacity hover:opacity-80 md:text-3xl"
+                className="mb-6 font-display text-3xl tracking-wide text-white transition-opacity hover:opacity-80 md:text-3xl"
               >
                 {siteConfig.phone}
               </a>
@@ -34,7 +34,7 @@ export function HomeMapSection() {
                 {siteConfig.hoursLabel}
               </p>
 
-              <p className="font-display mb-8 text-sm tracking-[0.25em] text-white/70 uppercase">
+              <p className="font-display mb-8 text-base tracking-[0.22em] text-white/70 uppercase">
                 {siteConfig.name}
               </p>
 

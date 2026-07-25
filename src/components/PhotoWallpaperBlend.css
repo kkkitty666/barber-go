@@ -2,8 +2,8 @@
   --blend-tone-dark: #0a0a0a;
   --blend-tone-mid: #141414;
   --blend-tone-light: #1c1c1c;
-  --blend-zone: clamp(9rem, 30vh, 20rem);
-  --blend-zone-side: clamp(5rem, 22vw, 14rem);
+  --blend-zone: clamp(10.35rem, 30vh, 23rem);
+  --blend-zone-side: clamp(5.75rem, 22vw, 16.1rem);
 }
 
 html[data-bg-mode="grainient"] {

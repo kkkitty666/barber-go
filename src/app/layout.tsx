@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cinzel, Cinzel_Decorative, Montserrat, UnifrakturMaguntia } from "next/font/google";
+import { Cormorant_Garamond, Montserrat } from "next/font/google";
 import "./globals.css";
 import { CookieConsent } from "@/components/CookieConsent";
 import { LocalBusinessJsonLd } from "@/components/LocalBusinessJsonLd";
@@ -14,22 +14,10 @@ const montserrat = Montserrat({
   weight: ["400", "500", "600", "700"],
 });
 
-const cinzel = Cinzel({
-  variable: "--font-cinzel",
-  subsets: ["latin", "latin-ext"],
-  weight: ["400", "600", "700", "900"],
-});
-
-const cinzelDecorative = Cinzel_Decorative({
-  variable: "--font-cinzel-decorative",
-  subsets: ["latin"],
-  weight: ["400", "700", "900"],
-});
-
-const unifraktur = UnifrakturMaguntia({
-  variable: "--font-unifraktur",
-  subsets: ["latin"],
-  weight: "400",
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin", "cyrillic"],
+  weight: ["500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -70,7 +58,7 @@ export default function RootLayout({
       lang="ru"
       data-bg-mode="grainient"
       data-scroll-behavior="smooth"
-      className={`${montserrat.variable} ${cinzel.variable} ${cinzelDecorative.variable} ${unifraktur.variable} h-full antialiased`}
+      className={`${montserrat.variable} ${cormorant.variable} h-full antialiased`}
     >
       <body className="relative min-h-full text-foreground">
         <YandexMetrika />

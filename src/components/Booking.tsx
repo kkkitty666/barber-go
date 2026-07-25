@@ -10,7 +10,7 @@ export function Booking() {
   return (
     <section className="section-padding noise-overlay pt-8">
       <div className="relative z-10 mx-auto max-w-lg text-center">
-        <h2 className="font-display mb-4 text-3xl tracking-[0.3em] text-gold md:text-4xl">
+        <h2 className="font-display mb-4 text-4xl tracking-[0.28em] text-gold md:text-5xl">
           ОНЛАЙН ЗАПИСЬ
         </h2>
         <OrnamentDivider className="mb-10" />
@@ -44,7 +44,7 @@ export function Booking() {
             href={siteConfig.bookingUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary text-xs"
+            className="btn-primary text-sm"
           >
             Записаться онлайн
           </a>

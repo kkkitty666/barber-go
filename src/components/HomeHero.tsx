@@ -18,11 +18,11 @@ export function HomeHero() {
               href={siteConfig.bookingUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary text-xs"
+              className="btn-primary text-sm"
             >
               Онлайн запись
             </a>
-            <Link href="/kosmetika" className="btn-secondary text-xs">
+            <Link href="/kosmetika" className="btn-secondary text-sm">
               Каталог косметики
             </Link>
           </div>

@@ -6,7 +6,7 @@
 .blog-article__back {
   display: inline-block;
   margin-bottom: 1.5rem;
-  font-size: 0.72rem;
+  font-size: 0.864rem;
   letter-spacing: 0.16em;
   color: var(--gold);
   text-decoration: none;
@@ -26,7 +26,7 @@
   flex-wrap: wrap;
   gap: 0.75rem 1.25rem;
   margin-bottom: 0.75rem;
-  font-size: 0.62rem;
+  font-size: 0.744rem;
   letter-spacing: 0.14em;
   color: rgba(192, 192, 192, 0.8);
   text-transform: uppercase;
@@ -35,7 +35,7 @@
 .blog-article__title {
   margin: 0;
   font-family: var(--font-display), serif;
-  font-size: clamp(1.25rem, 3.5vw, 2rem);
+  font-size: clamp(1.438rem, 3.5vw, 2.3rem);
   line-height: 1.25;
   letter-spacing: 0.06em;
   color: var(--gold-light);
@@ -44,7 +44,7 @@
 
 .blog-article__excerpt {
   margin: 0.85rem 0 0;
-  font-size: 0.95rem;
+  font-size: 1.14rem;
   line-height: 1.65;
   color: var(--foreground-muted);
 }
@@ -71,7 +71,7 @@
 .blog-article__section h2 {
   margin: 0 0 0.75rem;
   font-family: var(--font-display), serif;
-  font-size: 1rem;
+  font-size: 1.2rem;
   letter-spacing: 0.12em;
   color: var(--gold);
   text-transform: uppercase;
@@ -79,7 +79,7 @@
 
 .blog-article__section p {
   margin: 0 0 0.85rem;
-  font-size: 0.95rem;
+  font-size: 1.14rem;
   line-height: 1.75;
   color: var(--foreground-muted);
 }

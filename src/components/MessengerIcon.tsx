@@ -21,5 +21,5 @@ export function MessengerIcon({ name }: { name: string }) {
       </svg>
     );
   }
-  return <span className="font-display text-xs font-bold">M</span>;
+  return <span className="font-body text-sm font-bold">M</span>;
 }

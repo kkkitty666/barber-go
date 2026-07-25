@@ -6,7 +6,7 @@
 .product-detail__price {
   margin: 0.5rem 0 0.35rem;
   font-family: var(--font-display), serif;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   letter-spacing: 0.1em;
   color: var(--gold-light);
 }
@@ -16,7 +16,7 @@
   align-items: center;
   gap: 0.4rem;
   margin: 0 0 0.85rem;
-  font-size: 0.68rem;
+  font-size: 0.816rem;
   letter-spacing: 0.12em;
   color: rgba(192, 192, 192, 0.75);
   text-transform: uppercase;
@@ -120,7 +120,7 @@
 }
 
 .product-detail__meta-item {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   letter-spacing: 0.08em;
   color: var(--foreground-muted);
   text-transform: uppercase;
@@ -130,7 +130,7 @@
   display: block;
   margin-bottom: 0.2rem;
   font-family: var(--font-display), serif;
-  font-size: 0.65rem;
+  font-size: 0.78rem;
   letter-spacing: 0.2em;
   color: var(--gold);
 }
@@ -142,7 +142,7 @@
 }
 
 .product-detail__brand {
-  font-size: 0.7rem;
+  font-size: 0.84rem;
   letter-spacing: 0.24em;
   color: rgba(192, 192, 192, 0.6);
   text-transform: uppercase;
@@ -151,7 +151,7 @@
 .product-detail__title {
   margin: 0;
   font-family: var(--font-display), serif;
-  font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+  font-size: clamp(1.265rem, 2.5vw, 1.667rem);
   line-height: 1.35;
   letter-spacing: 0.1em;
   color: var(--gold-light);
@@ -160,7 +160,7 @@
 
 .product-detail__description {
   margin: 0;
-  font-size: 0.92rem;
+  font-size: 1.104rem;
   line-height: 1.7;
   color: var(--foreground-muted);
 }
@@ -168,7 +168,7 @@
 .product-detail__section-title {
   margin: 0 0 0.65rem;
   font-family: var(--font-display), serif;
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   letter-spacing: 0.22em;
   color: var(--gold);
   text-transform: uppercase;
@@ -177,7 +177,7 @@
 .product-detail__instructions {
   margin: 0;
   padding-left: 1.1rem;
-  font-size: 0.85rem;
+  font-size: 1.02rem;
   line-height: 1.65;
   color: var(--gold-light);
 }
@@ -188,7 +188,7 @@
 
 .product-detail__composition {
   margin: 0;
-  font-size: 0.8rem;
+  font-size: 0.96rem;
   line-height: 1.6;
   color: rgba(232, 232, 232, 0.45);
 }
@@ -197,7 +197,7 @@
   margin: 0;
   padding: 0.85rem 1rem;
   border-left: 2px solid var(--gold);
-  font-size: 0.82rem;
+  font-size: 0.984rem;
   line-height: 1.55;
   color: var(--foreground-muted);
   background: rgba(192, 192, 192, 0.06);
@@ -213,7 +213,7 @@
   border: 1px solid rgba(192, 192, 192, 0.4);
   border-radius: 999px;
   font-family: var(--font-display), serif;
-  font-size: 0.72rem;
+  font-size: 0.864rem;
   letter-spacing: 0.2em;
   color: var(--gold);
   text-decoration: none;

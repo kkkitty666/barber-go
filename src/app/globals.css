@@ -25,8 +25,8 @@
   --blend-tone-dark: #0a0a0a;
   --blend-tone-mid: #141414;
   --blend-tone-light: #1c1c1c;
-  --blend-zone: clamp(9rem, 30vh, 20rem);
-  --blend-zone-side: clamp(5rem, 22vw, 14rem);
+  --blend-zone: clamp(10.35rem, 30vh, 23rem);
+  --blend-zone-side: clamp(5.75rem, 22vw, 16.1rem);
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --safe-left: env(safe-area-inset-left, 0px);
@@ -53,10 +53,10 @@ html[data-bg-mode="grainient"] {
   --color-bronze: var(--bronze);
   --color-border: var(--border);
   --color-border-strong: var(--border-strong);
-  --font-display: var(--font-cinzel);
+  --font-display: var(--font-cormorant);
   --font-body: var(--font-montserrat);
-  --font-decorative: var(--font-cinzel-decorative);
-  --font-tagline: var(--font-unifraktur);
+  --font-decorative: var(--font-cormorant);
+  --font-tagline: var(--font-cormorant);
 }
 
 html {
@@ -64,6 +64,7 @@ html {
   background-color: #000000;
   background-image: none;
   overscroll-behavior-y: none;
+  font-size: 17px;
 }
 
 html {
@@ -168,7 +169,7 @@ body {
   border: 2px solid rgba(232, 232, 232, 0.35);
   background: linear-gradient(145deg, #8a8a8a 0%, #4a4a4a 100%);
   font-family: var(--font-display), serif;
-  font-size: 0.55rem;
+  font-size: 0.66rem;
   letter-spacing: 0.08em;
   color: var(--background);
   text-align: center;
@@ -194,7 +195,7 @@ body {
     bottom: 1.75rem;
     width: 6.25rem;
     height: 6.25rem;
-    font-size: 0.6rem;
+    font-size: 0.72rem;
   }
 }
 
@@ -561,7 +562,7 @@ body {
   border: 1px solid var(--gold);
   background: color-mix(in srgb, var(--gold) 10%, transparent);
   font-family: var(--font-body), system-ui, sans-serif;
-  font-size: 0.68rem;
+  font-size: 0.816rem;
   font-weight: 600;
   line-height: 1;
   letter-spacing: 0.12em;
@@ -584,7 +585,7 @@ body {
 }
 
 .btn-book {
-  @apply inline-flex items-center justify-center rounded-full border border-gold bg-gold/15 px-5 py-2.5 font-display text-[10px] tracking-[0.22em] text-gold backdrop-blur-md transition-all duration-300 hover:scale-105 hover:bg-gold hover:text-background uppercase sm:px-7 sm:py-3 sm:text-[11px];
+  @apply inline-flex items-center justify-center rounded-full border border-gold bg-gold/15 px-5 py-2.5 font-body text-[12px] font-semibold tracking-[0.22em] text-gold backdrop-blur-md transition-all duration-300 hover:scale-105 hover:bg-gold hover:text-background uppercase sm:px-7 sm:py-3 sm:text-[13px];
   box-shadow:
     0 4px 20px rgba(0, 0, 0, 0.35),
     inset 0 1px 0 rgba(232, 232, 232, 0.2);
@@ -602,7 +603,7 @@ body {
   border: 1px solid var(--border);
   background: transparent;
   font-family: var(--font-body), system-ui, sans-serif;
-  font-size: 0.68rem;
+  font-size: 0.816rem;
   font-weight: 600;
   line-height: 1;
   letter-spacing: 0.12em;
@@ -699,16 +700,24 @@ a.icon-badge.icon-badge--inverse:hover {
 }
 
 .tagline-text {
-  font-family: var(--font-cinzel-decorative), var(--font-cinzel), serif;
-  @apply text-xs tracking-[0.35em] text-gold/80 uppercase;
+  font-family: var(--font-display), "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  @apply text-sm tracking-[0.32em] text-gold/80 uppercase;
 }
 
 .font-decorative {
-  font-family: var(--font-cinzel-decorative), var(--font-cinzel), serif;
+  font-family: var(--font-decorative), "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+}
+
+.font-display {
+  font-family: var(--font-display), "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .headline-text {
-  @apply font-display text-2xl leading-tight font-black tracking-wide text-gold uppercase md:text-3xl lg:text-4xl;
+  @apply font-display text-3xl leading-tight font-bold tracking-wide text-gold uppercase md:text-4xl lg:text-5xl;
 }
 
 .asset-frame {
@@ -734,7 +743,7 @@ a.icon-badge.icon-badge--inverse:hover {
 .gold-label-badge span,
 .services-banner span {
   font-family: var(--font-display), serif;
-  font-size: 0.7rem;
+  font-size: 0.84rem;
   letter-spacing: 0.25em;
   color: var(--background);
   font-weight: 700;
@@ -744,7 +753,7 @@ a.icon-badge.icon-badge--inverse:hover {
 @media (min-width: 640px) {
   .gold-label-badge span,
   .services-banner span {
-    font-size: 0.8rem;
+    font-size: 0.96rem;
   }
 }
 
@@ -802,7 +811,7 @@ a.icon-badge.icon-badge--inverse:hover {
   border-radius: 9999px;
   padding: 0.5rem 1rem;
   font-family: var(--font-display), serif;
-  font-size: 0.6rem;
+  font-size: 0.72rem;
   letter-spacing: 0.12em;
   color: #fff;
   text-transform: uppercase;
@@ -842,7 +851,7 @@ a.icon-badge.icon-badge--inverse:hover {
 .legal-page .legal-block h2 {
   margin: 0 0 0.5rem;
   font-family: var(--font-display), serif;
-  font-size: 0.95rem;
+  font-size: 1.14rem;
   letter-spacing: 0.1em;
   color: var(--gold-light);
   text-transform: uppercase;
@@ -850,7 +859,7 @@ a.icon-badge.icon-badge--inverse:hover {
 
 .legal-page .legal-block p,
 .legal-page .legal-block li {
-  font-size: 0.9rem;
+  font-size: 1.08rem;
   line-height: 1.65;
   color: var(--foreground-muted);
 }
@@ -868,7 +877,7 @@ a.icon-badge.icon-badge--inverse:hover {
 
 @media (min-width: 640px) {
   .service-card-btn {
-    font-size: 0.65rem;
+    font-size: 0.78rem;
     padding: 0.55rem 1.25rem;
   }
 }

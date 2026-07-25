@@ -9,7 +9,7 @@
 .cart-page__title {
   margin: 0 0 1.25rem;
   font-family: var(--font-display), serif;
-  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-size: clamp(1.438rem, 3vw, 2.012rem);
   letter-spacing: 0.12em;
   color: var(--gold-light);
   text-transform: uppercase;
@@ -75,7 +75,7 @@
 
 .cart-line__brand {
   margin: 0;
-  font-size: 0.58rem;
+  font-size: 0.696rem;
   letter-spacing: 0.16em;
   color: rgba(192, 192, 192, 0.65);
   text-transform: uppercase;
@@ -85,7 +85,7 @@
   display: inline-block;
   margin: 0.15rem 0;
   font-family: var(--font-display), serif;
-  font-size: 0.82rem;
+  font-size: 0.984rem;
   letter-spacing: 0.08em;
   color: var(--gold-light);
   text-decoration: none;
@@ -95,13 +95,13 @@
 .cart-line__price,
 .cart-line__sum {
   margin: 0;
-  font-size: 0.82rem;
+  font-size: 0.984rem;
   color: var(--foreground-muted);
 }
 
 .cart-line__stock {
   margin: 0.35rem 0 0;
-  font-size: 0.68rem;
+  font-size: 0.816rem;
   letter-spacing: 0.08em;
   color: rgba(192, 192, 192, 0.75);
   text-transform: uppercase;
@@ -117,7 +117,7 @@
 
 .cart-line__issue {
   margin: 0.3rem 0 0;
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   color: #e0a6a6;
 }
 
@@ -142,7 +142,7 @@
   background: transparent;
   color: var(--gold);
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1;
 }
 
@@ -155,7 +155,7 @@
   border: 0;
   background: transparent;
   color: rgba(232, 232, 232, 0.55);
-  font-size: 0.68rem;
+  font-size: 0.816rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   cursor: pointer;
@@ -175,7 +175,7 @@
 }
 
 .cart-summary__note {
-  font-size: 0.82rem;
+  font-size: 0.984rem;
   color: var(--foreground-muted);
 }
 
@@ -216,7 +216,7 @@
 }
 
 .checkout-field span {
-  font-size: 0.68rem;
+  font-size: 0.816rem;
   letter-spacing: 0.14em;
   color: rgba(192, 192, 192, 0.75);
   text-transform: uppercase;
@@ -240,7 +240,7 @@
 .checkout-telegram__title {
   margin: 0 0 0.35rem;
   font-family: var(--font-display), serif;
-  font-size: 0.78rem;
+  font-size: 0.936rem;
   letter-spacing: 0.12em;
   color: var(--gold);
   text-transform: uppercase;
@@ -248,7 +248,7 @@
 
 .checkout-telegram__text {
   margin: 0 0 0.65rem;
-  font-size: 0.82rem;
+  font-size: 0.984rem;
   line-height: 1.5;
   color: var(--foreground-muted);
 }
@@ -257,7 +257,7 @@
   display: flex;
   gap: 0.65rem;
   align-items: flex-start;
-  font-size: 0.78rem;
+  font-size: 0.936rem;
   line-height: 1.5;
   color: var(--foreground-muted);
 }
@@ -276,13 +276,13 @@
 .checkout-error {
   margin: 0;
   color: #e57373;
-  font-size: 0.85rem;
+  font-size: 1.02rem;
 }
 
 .checkout-summary h2 {
   margin: 0 0 0.75rem;
   font-family: var(--font-display), serif;
-  font-size: 0.85rem;
+  font-size: 1.02rem;
   letter-spacing: 0.12em;
   color: var(--gold);
   text-transform: uppercase;
@@ -296,12 +296,12 @@
 
 .checkout-summary li {
   margin-bottom: 0.35rem;
-  font-size: 0.82rem;
+  font-size: 0.984rem;
   color: var(--foreground-muted);
 }
 
 .checkout-summary__total {
-  font-size: 0.95rem;
+  font-size: 1.14rem;
   color: var(--gold-light);
 }
 
@@ -329,7 +329,7 @@
 .shop-header-actions {
   display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.35rem;
 }
 
 .cart-button__badge,
@@ -343,7 +343,7 @@
   border-radius: 999px;
   background: var(--gold);
   color: var(--background);
-  font-size: 0.58rem;
+  font-size: 0.696rem;
   font-weight: 700;
   line-height: 1rem;
   text-align: center;

@@ -66,7 +66,7 @@ export function CartPageContent() {
       <div className="cart-empty">
         <h1 className="cart-page__title">Корзина пуста</h1>
         <p className="cart-empty__text">Добавьте средства из каталога — оформим самовывоз из барбершопа.</p>
-        <Link href="/kosmetika" className="btn-primary text-xs">
+        <Link href="/kosmetika" className="btn-primary text-sm">
           Перейти в каталог
         </Link>
       </div>
@@ -150,7 +150,7 @@ export function CartPageContent() {
         </p>
         <p className="cart-summary__note">Самовывоз из {siteConfig.fullAddress}</p>
         <div className="cart-summary__actions">
-          <Link href="/kosmetika/oformlenie" className="btn-primary text-xs cart-summary__checkout">
+          <Link href="/kosmetika/oformlenie" className="btn-primary text-sm cart-summary__checkout">
             Оформить заказ
           </Link>
         </div>
@@ -279,7 +279,7 @@ export function CheckoutPageContent() {
         )}
         <p className="cart-summary__note">Самовывоз: {siteConfig.fullAddress}</p>
         <div className="cart-summary__actions">
-          <Link href="/kosmetika" className="btn-primary text-xs">
+          <Link href="/kosmetika" className="btn-primary text-sm">
             Вернуться в каталог
           </Link>
         </div>
@@ -317,7 +317,7 @@ export function CheckoutPageContent() {
             <p className="checkout-telegram__text">
               Откройте бота и нажмите «Старт» — так мы сможем сообщить, когда заказ собран.
             </p>
-            <a href={botLink} target="_blank" rel="noopener noreferrer" className="btn-secondary text-xs">
+            <a href={botLink} target="_blank" rel="noopener noreferrer" className="btn-secondary text-sm">
               Подключить Telegram
             </a>
           </div>
@@ -351,7 +351,7 @@ export function CheckoutPageContent() {
 
           <button
             type="submit"
-            className="btn-primary text-xs"
+            className="btn-primary text-sm"
             disabled={submitting || !bindToken || !inventoryLoaded || hasBlockingIssues || !consent}
           >
             {submitting ? "Отправляем..." : !inventoryLoaded ? "Проверяем остатки..." : "Подтвердить заказ"}

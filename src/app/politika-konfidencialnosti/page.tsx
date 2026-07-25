@@ -13,7 +13,7 @@ export default function PrivacyPage() {
   return (
     <SiteShell>
       <article className="legal-page section-padding mx-auto max-w-3xl py-12">
-        <h1 className="font-display mb-6 text-2xl tracking-[0.12em] text-gold uppercase">
+        <h1 className="font-display mb-6 text-3xl tracking-[0.1em] text-gold uppercase">
           Политика конфиденциальности
         </h1>
         <p className="mb-6 text-sm text-foreground-muted">
@@ -84,7 +84,7 @@ export default function PrivacyPage() {
           </p>
         </section>
 
-        <p className="mt-8 text-xs text-foreground-muted">
+        <p className="mt-8 text-sm text-foreground-muted">
           Последнее обновление: июль 2026. {siteConfig.name}, {siteConfig.fullAddress}.
         </p>
       </article>

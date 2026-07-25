@@ -11,7 +11,7 @@
 .price-list-intro {
   margin-top: 0.75rem;
   max-width: 32rem;
-  font-size: 0.8rem;
+  font-size: 0.96rem;
   line-height: 1.5;
   color: var(--foreground-muted);
 }
@@ -40,7 +40,7 @@
 
 .price-list-category {
   font-family: var(--font-display), serif;
-  font-size: 0.95rem;
+  font-size: 1.14rem;
   letter-spacing: 0.22em;
   color: var(--gold);
   text-transform: uppercase;
@@ -48,7 +48,7 @@
 
 .price-list-category-desc {
   margin-top: 0.2rem;
-  font-size: 0.68rem;
+  font-size: 0.816rem;
   letter-spacing: 0.05em;
   color: rgba(232, 232, 232, 0.5);
 }
@@ -149,7 +149,7 @@
 
 .price-list-name {
   font-family: var(--font-display), serif;
-  font-size: 0.78rem;
+  font-size: 0.936rem;
   letter-spacing: 0.06em;
   color: var(--gold-light);
   text-transform: uppercase;
@@ -158,7 +158,7 @@
 }
 
 .price-list-subtitle {
-  font-size: 0.62rem;
+  font-size: 0.744rem;
   letter-spacing: 0.1em;
   color: rgba(192, 192, 192, 0.72);
   text-transform: uppercase;
@@ -167,7 +167,7 @@
 .price-list-desc {
   margin: 0.15rem 0 0;
   max-width: 36rem;
-  font-size: 0.68rem;
+  font-size: 0.816rem;
   line-height: 1.45;
   color: rgba(232, 232, 232, 0.52);
 }
@@ -179,7 +179,7 @@
 }
 
 .price-list-duration {
-  font-size: 0.62rem;
+  font-size: 0.744rem;
   letter-spacing: 0.08em;
   color: rgba(232, 232, 232, 0.42);
   text-transform: uppercase;
@@ -188,7 +188,7 @@
 .price-list-price {
   flex-shrink: 0;
   font-family: var(--font-display), serif;
-  font-size: 0.9rem;
+  font-size: 1.08rem;
   letter-spacing: 0.04em;
   color: var(--gold);
   transition: transform 0.3s ease, text-shadow 0.3s ease;
@@ -220,7 +220,7 @@
   padding: 0.12rem 0.4rem;
   border-radius: 9999px;
   border: 1px solid rgba(192, 192, 192, 0.4);
-  font-size: 0.5rem;
+  font-size: 0.6rem;
   letter-spacing: 0.12em;
   color: var(--gold);
   text-transform: uppercase;
@@ -248,7 +248,7 @@
 
 .price-list-note {
   margin-bottom: 1rem;
-  font-size: 0.68rem;
+  font-size: 0.816rem;
   line-height: 1.5;
   color: rgba(232, 232, 232, 0.42);
 }
@@ -260,7 +260,7 @@
 
 @media (min-width: 640px) {
   .price-list-category {
-    font-size: 1.05rem;
+    font-size: 1.26rem;
   }
 
   .price-list-row-main {
@@ -269,10 +269,10 @@
   }
 
   .price-list-name {
-    font-size: 0.85rem;
+    font-size: 1.02rem;
   }
 
   .price-list-price {
-    font-size: 0.98rem;
+    font-size: 1.176rem;
   }
 }

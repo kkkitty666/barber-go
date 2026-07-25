@@ -116,7 +116,7 @@
   margin: 0;
   grid-column: 1 / -1;
   font-family: var(--font-display), serif;
-  font-size: 0.95rem;
+  font-size: 1.14rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--gold-light);
@@ -125,7 +125,7 @@
 .chroma-info .role {
   margin: 0;
   grid-column: 1 / -1;
-  font-size: 0.78rem;
+  font-size: 0.936rem;
   line-height: 1.45;
   color: var(--foreground-muted);
 }
@@ -133,14 +133,14 @@
 .chroma-info .chroma-bio {
   margin: 0;
   grid-column: 1 / -1;
-  font-size: 0.72rem;
+  font-size: 0.864rem;
   line-height: 1.55;
   color: rgba(232, 232, 232, 0.72);
 }
 
 .chroma-info .handle,
 .chroma-info .location {
-  font-size: 0.68rem;
+  font-size: 0.816rem;
   letter-spacing: 0.08em;
   color: rgba(192, 192, 192, 0.75);
   text-transform: uppercase;
@@ -157,7 +157,7 @@
 .chroma-hint {
   grid-column: 1 / -1;
   margin-top: 0.15rem;
-  font-size: 0.62rem;
+  font-size: 0.744rem;
   letter-spacing: 0.14em;
   color: rgba(192, 192, 192, 0.55);
   text-transform: uppercase;
@@ -203,7 +203,7 @@
 .chroma-tags__label {
   margin: 0 0 0.45rem;
   font-family: var(--font-display), serif;
-  font-size: 0.58rem;
+  font-size: 0.696rem;
   letter-spacing: 0.16em;
   color: var(--gold);
   text-transform: uppercase;
@@ -222,7 +222,7 @@
   padding: 0.2rem 0.55rem;
   border: 1px solid rgba(192, 192, 192, 0.35);
   border-radius: 999px;
-  font-size: 0.58rem;
+  font-size: 0.696rem;
   letter-spacing: 0.06em;
   color: var(--foreground-muted);
   text-transform: uppercase;
@@ -320,7 +320,7 @@
   max-width: 42rem;
   margin: 1.25rem auto 0;
   text-align: center;
-  font-size: 0.82rem;
+  font-size: 0.984rem;
   line-height: 1.6;
   color: var(--foreground-muted);
 }

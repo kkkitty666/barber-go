@@ -172,7 +172,7 @@ export function ChromaGrid({
                             href={item.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="chroma-book btn-secondary text-xs"
+                            className="chroma-book btn-secondary text-sm"
                             onClick={(event) => event.stopPropagation()}
                           >
                             {bookLabel}

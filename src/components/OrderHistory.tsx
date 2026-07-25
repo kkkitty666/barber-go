@@ -110,7 +110,7 @@ export function OrderHistoryContent() {
             required
           />
         </label>
-        <button type="submit" className="btn-secondary text-xs">
+        <button type="submit" className="btn-secondary text-sm">
           Найти заказ
         </button>
       </form>
@@ -121,7 +121,7 @@ export function OrderHistoryContent() {
       {!loading && !error && orders.length === 0 && (
         <div className="order-history__empty">
           <p>Заказов пока нет. Оформите первый заказ в каталоге косметики.</p>
-          <Link href="/kosmetika" className="btn-primary text-xs">
+          <Link href="/kosmetika" className="btn-primary text-sm">
             В каталог
           </Link>
         </div>

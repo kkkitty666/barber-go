@@ -12,7 +12,7 @@ export function WorksSection() {
     <section className="section-padding noise-overlay bg-background-secondary/30 pt-8">
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="mb-6 text-center">
-          <h2 className="font-display mb-4 text-3xl tracking-[0.3em] text-gold md:text-4xl">
+          <h2 className="font-display mb-4 text-4xl tracking-[0.28em] text-gold md:text-5xl">
             НАШИ РАБОТЫ
           </h2>
           <OrnamentDivider label="КАЧЕСТВО В ДЕТАЛЯХ" />
@@ -37,7 +37,7 @@ export function WorksSection() {
         </div>
 
         <div className="mt-8 flex justify-center">
-          <Link href="/raboty" className="btn-secondary text-xs">
+          <Link href="/raboty" className="btn-secondary text-sm">
             Все фото работ
           </Link>
         </div>

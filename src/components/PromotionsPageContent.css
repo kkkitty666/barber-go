@@ -2,7 +2,7 @@
   max-width: 42rem;
   margin: 0 auto 2.5rem;
   text-align: center;
-  font-size: 0.95rem;
+  font-size: 1.14rem;
   line-height: 1.65;
   color: rgba(232, 232, 232, 0.72);
 }
@@ -76,7 +76,7 @@
   border-radius: 999px;
   background: color-mix(in srgb, var(--background) 72%, transparent);
   font-family: var(--font-display), serif;
-  font-size: 0.58rem;
+  font-size: 0.696rem;
   letter-spacing: 0.16em;
   color: var(--gold-light);
   text-transform: uppercase;
@@ -100,7 +100,7 @@
 .promo-card__title {
   margin: 0;
   font-family: var(--font-display), serif;
-  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  font-size: clamp(1.553rem, 3vw, 2.128rem);
   font-weight: 900;
   line-height: 1.1;
   letter-spacing: 0.05em;
@@ -114,7 +114,7 @@
 
 .promo-card__description {
   margin: 0;
-  font-size: 0.92rem;
+  font-size: 1.104rem;
   line-height: 1.65;
   color: rgba(232, 232, 232, 0.75);
 }
@@ -131,7 +131,7 @@
 .promo-card__terms li {
   position: relative;
   padding-left: 1rem;
-  font-size: 0.78rem;
+  font-size: 0.936rem;
   line-height: 1.55;
   color: rgba(192, 192, 192, 0.65);
 }

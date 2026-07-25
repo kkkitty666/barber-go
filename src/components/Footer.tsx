@@ -20,13 +20,13 @@ export function Footer() {
                 className="h-14 w-14 object-contain"
               />
               <div>
-                <p className="font-display text-sm tracking-[0.2em] text-gold">{siteConfig.name}</p>
+                <p className="font-display text-base tracking-[0.18em] text-gold">{siteConfig.name}</p>
                 <p className="tagline-text !tracking-[0.2em]">{siteConfig.motto}</p>
               </div>
             </div>
 
             <div className="text-center md:text-right">
-              <p className="font-display mb-3 text-[10px] tracking-[0.25em] text-gold uppercase">
+              <p className="font-display mb-3 text-[13px] tracking-[0.22em] text-gold uppercase">
                 Запись и соцсети
               </p>
               <div className="flex justify-center gap-3 md:justify-end">
@@ -49,7 +49,7 @@ export function Footer() {
 
           <OrnamentDivider label={siteConfig.footerSlogan} className="mb-6" />
 
-          <div className="flex flex-col items-center justify-between gap-4 text-xs text-foreground-muted md:flex-row">
+          <div className="flex flex-col items-center justify-between gap-4 text-sm text-foreground-muted md:flex-row">
             <p>© {new Date().getFullYear()} {siteConfig.name}. Все права защищены.</p>
             <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
               <a href="/politika-konfidencialnosti" className="hover:text-gold">

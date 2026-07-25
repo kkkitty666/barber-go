@@ -23,7 +23,7 @@ export async function ReviewsSection() {
         <div className="mb-10 text-center md:mb-12">
           <h2
             id="reviews-title"
-            className="font-display mb-4 text-3xl tracking-[0.3em] text-gold md:text-4xl"
+            className="font-display mb-4 text-4xl tracking-[0.28em] text-gold md:text-5xl"
           >
             {reviews.title}
           </h2>
@@ -41,14 +41,14 @@ export async function ReviewsSection() {
         <ReviewsGrid items={preview} />
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3 md:mt-12">
-          <Link href="/otzyvy" className="btn-secondary text-xs">
+          <Link href="/otzyvy" className="btn-secondary text-sm">
             Все отзывы на сайте
           </Link>
           <a
             href={reviews.ctaUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-secondary text-xs"
+            className="btn-secondary text-sm"
           >
             {reviews.ctaLabel}
           </a>
