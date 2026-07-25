@@ -310,7 +310,7 @@ export default function Grainient({
         /* ignore */
       }
     };
-  }, [onInitError, persistent]);
+  }, [onInitError, persistent, maxDpr]);
 
   useEffect(() => {
     const container = containerRef.current;

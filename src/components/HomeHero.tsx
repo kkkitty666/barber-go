@@ -15,7 +15,7 @@ export function HomeHero() {
           </p>
           <div className="hero-home__actions">
             <a
-              href={siteConfig.dikidiUrl}
+              href={siteConfig.bookingUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary text-xs"

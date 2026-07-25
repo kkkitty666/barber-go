@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
 import { blogPosts } from "@/config/blog";
 import { productCatalog } from "@/config/products";
+import { getSiteUrl } from "@/lib/site-url";
 
-const baseUrl = (process.env.NEXT_PUBLIC_APP_URL ?? "https://pc-barbershop.ru").replace(/\/$/, "");
+const baseUrl = getSiteUrl();
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -12,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/uslugi",
     "/kosmetika",
     "/raboty",
+    "/otzyvy",
     "/barbery",
     "/blog",
     "/akcii",
@@ -21,8 +23,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ].map((path) => ({
     url: `${baseUrl}${path}`,
     lastModified: now,
-    changeFrequency: path === "" || path === "/kosmetika" || path === "/akcii" ? "weekly" : "monthly",
-    priority: path === "" ? 1 : path === "/uslugi" || path === "/kosmetika" ? 0.9 : 0.7,
+    changeFrequency:
+      path === "" || path === "/kosmetika" || path === "/akcii" || path === "/otzyvy"
+        ? "weekly"
+        : "monthly",
+    priority:
+      path === ""
+        ? 1
+        : path === "/uslugi" || path === "/kosmetika" || path === "/otzyvy"
+          ? 0.9
+          : 0.7,
   }));
 
   const products: MetadataRoute.Sitemap = productCatalog.map((product) => ({

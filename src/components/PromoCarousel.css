@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   overflow: visible;
-  min-height: 100svh;
+  min-height: auto;
   background: transparent;
   border-bottom: none;
 }
@@ -16,17 +16,22 @@
   flex-direction: column;
   justify-content: flex-start;
   gap: 0.85rem;
-  min-height: 100svh;
+  min-height: auto;
   padding:
-    calc(var(--header-offset) + var(--safe-top) + 1.75rem)
+    calc(var(--header-offset) + var(--safe-top) + 0.85rem)
     clamp(0.75rem, 3.5vw, 1.75rem)
-    calc(var(--mobile-bar-height) + var(--safe-bottom) + 1rem);
+    calc(var(--mobile-bar-height) + var(--safe-bottom) + 0.75rem);
 }
 
 @media (min-width: 768px) {
+  .promo-carousel {
+    min-height: 100svh;
+  }
+
   .promo-carousel__inner {
     justify-content: flex-start;
     gap: 1rem;
+    min-height: 100svh;
     padding:
       calc(var(--header-offset) + var(--safe-top) + 2.15rem)
       2rem
@@ -83,6 +88,45 @@
       transparent 40%
     );
   pointer-events: none;
+}
+
+.promo-carousel__stage {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  will-change: opacity, transform;
+}
+
+.promo-carousel__stage--next {
+  animation: promo-carousel-enter-next 0.72s cubic-bezier(0.33, 1, 0.68, 1) both;
+}
+
+.promo-carousel__stage--prev {
+  animation: promo-carousel-enter-prev 0.72s cubic-bezier(0.33, 1, 0.68, 1) both;
+}
+
+@keyframes promo-carousel-enter-next {
+  from {
+    opacity: 0;
+    transform: translate3d(1.1rem, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes promo-carousel-enter-prev {
+  from {
+    opacity: 0;
+    transform: translate3d(-1.1rem, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .promo-carousel__grid {
@@ -410,12 +454,32 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .promo-carousel__stage--next,
+  .promo-carousel__stage--prev {
+    animation: promo-carousel-enter-reduced 0.16s ease both;
+  }
+
+  @keyframes promo-carousel-enter-reduced {
+    from {
+      opacity: 0.4;
+      transform: none;
+    }
+
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
   .promo-carousel__scroll-hint {
     animation: none;
     opacity: 0.7;
   }
 
-  .promo-carousel__cta:hover,
+  .promo-carousel__cta:hover {
+    transform: none;
+  }
+
   .promo-carousel__nav:hover {
     transform: translateY(-50%);
   }

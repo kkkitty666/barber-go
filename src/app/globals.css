@@ -14,7 +14,8 @@
   --metal-highlight: #f5f5f5;
   --metal-shadow: #525252;
   --header-top-gap: 0.65rem;
-  --header-offset: calc(6.35rem + var(--header-top-gap));
+  /* Mobile chrome: logo ~2.5rem + header padding — keep clearance tight */
+  --header-offset: calc(3.55rem + var(--header-top-gap));
   --radius-sm: 12px;
   --radius-md: 16px;
   --radius-lg: 20px;
@@ -30,7 +31,7 @@
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --safe-left: env(safe-area-inset-left, 0px);
   --safe-right: env(safe-area-inset-right, 0px);
-  --mobile-bar-height: 5.5rem;
+  --mobile-bar-height: 4.5rem;
 }
 
 html[data-bg-mode="grainient"] {
@@ -65,13 +66,14 @@ html {
   overscroll-behavior-y: none;
 }
 
-html,
-body {
+html {
   min-height: 100%;
-  overflow-x: clip;
 }
 
 body {
+  min-height: 100%;
+  /* Prefer max-width over overflow-x: clip/hidden — those break position:sticky sitewide. */
+  max-width: 100%;
   background: transparent;
   color: var(--foreground);
   font-family: var(--font-montserrat), system-ui, sans-serif;
@@ -247,6 +249,12 @@ body {
 @media (min-width: 768px) {
   .mobile-content-offset {
     padding-bottom: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-offset: calc(4.35rem + var(--header-top-gap));
   }
 }
 
@@ -504,7 +512,8 @@ body {
 
 .section-padding {
   @apply px-4 pt-16 md:px-8 md:pt-20 lg:px-16;
-  padding-bottom: calc(5.5rem + var(--mobile-bar-height) + var(--safe-bottom));
+  /* Bottom CTA clearance lives on .mobile-main — don't stack it on every section */
+  padding-bottom: 4rem;
 }
 
 @media (min-width: 768px) {

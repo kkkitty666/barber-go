@@ -35,7 +35,7 @@ export const promotions: Promotion[] = [
     ],
     image: "/assets/works/work-2.png",
     imageAlt: "Мужская стрижка с фейдом в PC Барбершоп",
-    cta: { label: "Записаться со скидкой", href: siteConfig.dikidiUrl, external: true },
+    cta: { label: "Записаться со скидкой", href: siteConfig.bookingUrl, external: true },
     active: true,
   },
   {
@@ -53,7 +53,7 @@ export const promotions: Promotion[] = [
     ],
     image: "/assets/works/work-3.png",
     imageAlt: "Детская стрижка в PC Барбершоп",
-    cta: { label: "Записаться на двоих", href: siteConfig.dikidiUrl, external: true },
+    cta: { label: "Записаться на двоих", href: siteConfig.bookingUrl, external: true },
     active: true,
   },
   {

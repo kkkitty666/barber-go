@@ -7,7 +7,7 @@ import "./FloatingBookButton.css";
 export function FloatingBookButton() {
   return (
     <a
-      href={siteConfig.dikidiUrl}
+      href={siteConfig.bookingUrl}
       target="_blank"
       rel="noopener noreferrer"
       className="book-fab-link"

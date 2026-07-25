@@ -12,7 +12,9 @@
     "telegram:webhook": "node scripts/telegram-webhook.mjs",
     "telegram:poll": "node scripts/telegram-poll.mjs",
     "telegram:commands": "node scripts/telegram-commands.mjs",
-    "db:migrate-json": "node scripts/migrate-json-to-supabase.mjs"
+    "db:migrate-json": "node scripts/migrate-json-to-supabase.mjs",
+    "db:apply-schema": "node scripts/apply-supabase-schema.mjs",
+    "db:sync-inventory": "node scripts/sync-inventory-to-supabase.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.110.7",

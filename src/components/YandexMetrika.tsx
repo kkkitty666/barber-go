@@ -1,8 +1,34 @@
+"use client";
+
 import Script from "next/script";
+import { useEffect, useState } from "react";
+import {
+  COOKIE_CONSENT_EVENT,
+  readCookieConsent,
+  type CookieConsentValue,
+} from "@/lib/cookie-consent";
 
 export function YandexMetrika() {
   const id = process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID?.trim();
-  if (!id) return null;
+  const [consent, setConsent] = useState<CookieConsentValue | null>(null);
+
+  useEffect(() => {
+    setConsent(readCookieConsent());
+
+    const onChange = (event: Event) => {
+      const detail = (event as CustomEvent<CookieConsentValue>).detail;
+      if (detail === "accepted" || detail === "declined") {
+        setConsent(detail);
+      } else {
+        setConsent(readCookieConsent());
+      }
+    };
+
+    window.addEventListener(COOKIE_CONSENT_EVENT, onChange);
+    return () => window.removeEventListener(COOKIE_CONSENT_EVENT, onChange);
+  }, []);
+
+  if (!id || consent !== "accepted") return null;
 
   const numericId = Number(id);
   if (!Number.isFinite(numericId) || numericId <= 0) return null;

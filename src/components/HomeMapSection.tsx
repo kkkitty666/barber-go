@@ -7,7 +7,7 @@ import { YandexMapEmbed } from "./YandexMapEmbed";
 
 export function HomeMapSection() {
   return (
-    <section id="contacts" className="section-padding relative z-10 pb-[calc(var(--mobile-bar-height)+var(--safe-bottom)+2rem)] md:pb-20">
+    <section id="contacts" className="section-padding relative z-10 md:pb-20">
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="home-map-frame relative">
           <div className="grid min-h-[420px] md:grid-cols-2 md:min-h-[480px]">

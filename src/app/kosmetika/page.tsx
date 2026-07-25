@@ -5,7 +5,8 @@ import { SiteShell } from "@/components/SiteShell";
 import { getProductsWithInventory } from "@/lib/inventory";
 import { pageSeo } from "@/config/site";
 
-export const dynamic = "force-dynamic";
+/** Inventory-backed catalog; short ISR instead of force-dynamic. */
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: pageSeo.kosmetika.title,

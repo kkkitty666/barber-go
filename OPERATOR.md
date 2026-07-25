@@ -12,6 +12,7 @@
 - `TELEGRAM_BOT_TOKEN`, `TELEGRAM_STAFF_CHAT_ID`, `TELEGRAM_WEBHOOK_SECRET`
 - `TELEGRAM_ADMIN_SECRET` — для `POST /api/telegram/setup` (отдельно от webhook; на проде без него setup отключён)
 - `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` (**обязательно на проде**)
+- `CRON_SECRET` — Bearer для cron / ручного `POST /api/reviews/sync` (`openssl rand -hex 32`)
 
 Опционально:
 
@@ -20,6 +21,15 @@
 
 После деплоя или смены `TELEGRAM_WEBHOOK_SECRET` обязательно: `npm run telegram:webhook`  
 (секрет уходит в Telegram как `secret_token`, не в URL).
+
+После появления таблиц в Supabase:
+
+```bash
+npm run db:apply-schema -- --check   # все таблицы ✓
+npm run db:sync-inventory            # data/inventory.json → Supabase (0 = OOS)
+curl -sS -X POST "$NEXT_PUBLIC_APP_URL/api/reviews/sync" \
+  -H "Authorization: Bearer $CRON_SECRET"
+```
 
 ## Telegram: первичная настройка
 

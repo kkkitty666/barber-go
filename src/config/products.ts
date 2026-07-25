@@ -395,8 +395,9 @@ const productSeeds: ProductSeed[] = [
     name: "WHITE Гель-парфюм для душа \"Cedar Wood\", 100 мл",
     brand: "WHITE",
     category: "shower-gels",
-    image:
-      "/assets/products/white-cosmetics/TSedarVud250.png",
+    // No dedicated 100 ml mockup in assets — use volume-neutral Cedar Wood packshot
+    // (copied from TSedarVud250.png). Do not point at *250* filename for this SKU.
+    image: "/assets/products/white-cosmetics/Cedar-Wood.png",
     price: 326,
     volume: "100 мл",
   },

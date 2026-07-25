@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { formatPrice } from "@/config/products";
 import type { ProductWithInventory } from "@/lib/inventory";
@@ -15,8 +16,14 @@ export function ProductDetail({ product }: ProductDetailProps) {
         <div>
           <div className="product-detail__visual">
             <div className="product-detail__image-wrap">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={product.image} alt={product.name} className="product-detail__image" />
+              <Image
+                src={product.image}
+                alt={product.name}
+                fill
+                sizes="(max-width: 768px) 90vw, 480px"
+                className="product-detail__image"
+                style={{ objectFit: "contain", backgroundColor: "#ffffff" }}
+              />
             </div>
           </div>
           <div className="product-detail__meta">

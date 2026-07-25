@@ -46,12 +46,30 @@
   .cart-line {
     grid-template-columns: 80px 1fr auto auto;
   }
+
+  .cart-line__image-wrap,
+  .cart-line__image {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.cart-line__image-wrap {
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: #fff;
 }
 
 .cart-line__image {
   width: 72px;
   height: 72px;
-  object-fit: cover;
+  object-fit: contain !important;
+  object-position: center center !important;
+  background: #fff !important;
+  background-color: #fff !important;
   border-radius: var(--radius-sm);
 }
 

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -37,6 +38,7 @@ export function Header() {
   const headerVisible = useHeaderVisibility();
 
   const isActive = (href: string) => {
+    if (href.includes("#")) return false;
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
   };
@@ -118,14 +120,13 @@ export function Header() {
                 }`}
                 aria-label={`${siteConfig.name} — на главную`}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={assets.logoGold}
                   alt={siteConfig.name}
-                  width={120}
-                  height={120}
+                  width={112}
+                  height={112}
+                  priority
                   className="site-header__logo object-contain"
-                  decoding="async"
                 />
               </Link>
             </div>

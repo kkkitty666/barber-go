@@ -44,3 +44,16 @@ export function getSupabase(): SupabaseClient | null {
   });
   return client;
 }
+
+/** PostgREST / Postgres errors when a table has not been migrated yet. */
+export function isMissingRelationError(error: { message?: string; code?: string } | null | undefined): boolean {
+  if (!error) return false;
+  const message = error.message ?? "";
+  return (
+    error.code === "PGRST205" ||
+    error.code === "42P01" ||
+    /could not find the table/i.test(message) ||
+    /schema cache/i.test(message) ||
+    /relation .* does not exist/i.test(message)
+  );
+}

@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { siteConfig } from "@/config/site";
-import { PriceListIcon } from "./PriceListIcon";
 import "./PriceList.css";
 
 export function PriceList() {
@@ -54,7 +53,6 @@ export function PriceList() {
                   >
                     <div className="price-list-row-glow" aria-hidden />
                     <div className="price-list-row-main">
-                      {"icon" in item ? <PriceListIcon type={item.icon} /> : null}
                       <div className="price-list-row-info">
                         <span className="price-list-name">{item.name}</span>
                         {"subtitle" in item && item.subtitle ? (
@@ -87,7 +85,7 @@ export function PriceList() {
           Точная стоимость может зависеть от сложности и длины волос. Уточняйте у мастера при записи.
         </p>
         <Link
-          href={siteConfig.dikidiUrl}
+          href={siteConfig.bookingUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="btn-primary price-list-cta"

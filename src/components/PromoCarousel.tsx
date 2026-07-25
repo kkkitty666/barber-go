@@ -31,34 +31,60 @@ function ChevronIcon({ direction }: { direction: "left" | "right" }) {
 
 export function PromoCarousel() {
   const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState<1 | -1>(1);
+  const [transitionEnabled, setTransitionEnabled] = useState(false);
   const [paused, setPaused] = useState(false);
+  const [tabHidden, setTabHidden] = useState(false);
   const [autoplaySeed, setAutoplaySeed] = useState(0);
   const touchStartX = useRef<number | null>(null);
+  const indexRef = useRef(index);
   const total = slides.length;
   const slide = slides[index];
 
+  indexRef.current = index;
+
   const goTo = useCallback(
-    (next: number) => {
-      setIndex(((next % total) + total) % total);
+    (next: number, dir?: 1 | -1) => {
+      const normalized = ((next % total) + total) % total;
+      if (normalized === indexRef.current) return;
+
+      const inferredDir: 1 | -1 =
+        dir ??
+        (normalized > indexRef.current || (indexRef.current === total - 1 && normalized === 0)
+          ? 1
+          : -1);
+
+      setTransitionEnabled(true);
+      setDirection(inferredDir);
+      setIndex(normalized);
       setAutoplaySeed((value) => value + 1);
     },
     [total],
   );
 
-  const goNext = useCallback(() => goTo(index + 1), [goTo, index]);
-  const goPrev = useCallback(() => goTo(index - 1), [goTo, index]);
+  const goNext = useCallback(() => goTo(indexRef.current + 1, 1), [goTo]);
+  const goPrev = useCallback(() => goTo(indexRef.current - 1, -1), [goTo]);
 
   useEffect(() => {
-    if (paused || total <= 1) return;
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion) return;
+    const syncVisibility = () => {
+      setTabHidden(document.visibilityState === "hidden");
+    };
+    syncVisibility();
+    document.addEventListener("visibilitychange", syncVisibility);
+    return () => document.removeEventListener("visibilitychange", syncVisibility);
+  }, []);
+
+  useEffect(() => {
+    if (paused || tabHidden || total <= 1) return;
 
     const timer = window.setInterval(() => {
+      setTransitionEnabled(true);
+      setDirection(1);
       setIndex((current) => (current + 1) % total);
     }, autoplayMs);
 
     return () => window.clearInterval(timer);
-  }, [paused, total, autoplaySeed]);
+  }, [paused, tabHidden, total, autoplaySeed, autoplayMs]);
 
   const handleTouchStart = (event: React.TouchEvent) => {
     touchStartX.current = event.touches[0]?.clientX ?? null;
@@ -111,44 +137,54 @@ export function PromoCarousel() {
             </>
           ) : null}
 
-          <div className="promo-carousel__grid">
-            <div className="promo-carousel__content">
-              <span className="promo-carousel__badge">{slide.badge}</span>
-              <h2 className="promo-carousel__headline">
-                {slide.headline}
-                <span className="promo-carousel__headline-accent">{slide.headlineAccent}</span>
-              </h2>
-              <p className="promo-carousel__description">{slide.description}</p>
-              {slide.cta.external ? (
-                <a
-                  href={slide.cta.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="promo-carousel__cta"
-                >
-                  {slide.cta.label}
-                </a>
-              ) : (
-                <Link href={slide.cta.href} className="promo-carousel__cta">
-                  {slide.cta.label}
-                </Link>
-              )}
-            </div>
+          <div
+            key={slide.id}
+            className={
+              transitionEnabled
+                ? `promo-carousel__stage promo-carousel__stage--${direction === 1 ? "next" : "prev"}`
+                : "promo-carousel__stage"
+            }
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            <div className="promo-carousel__grid">
+              <div className="promo-carousel__content">
+                <span className="promo-carousel__badge">{slide.badge}</span>
+                <h2 className="promo-carousel__headline">
+                  {slide.headline}
+                  <span className="promo-carousel__headline-accent">{slide.headlineAccent}</span>
+                </h2>
+                <p className="promo-carousel__description">{slide.description}</p>
+                {slide.cta.external ? (
+                  <a
+                    href={slide.cta.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="promo-carousel__cta"
+                  >
+                    {slide.cta.label}
+                  </a>
+                ) : (
+                  <Link href={slide.cta.href} className="promo-carousel__cta">
+                    {slide.cta.label}
+                  </Link>
+                )}
+              </div>
 
-            <div className="promo-carousel__visual-row">
-              <div
-                className={`promo-carousel__visual${"variant" in slide && slide.variant === "product" ? " promo-carousel__visual--product" : ""}`}
-              >
-                <div className="promo-carousel__visual-frame" aria-hidden />
-                <Image
-                  key={slide.id}
-                  src={slide.image}
-                  alt={slide.imageAlt}
-                  fill
-                  className="promo-carousel__image object-cover"
-                  sizes="(max-width: 768px) 55vw, 420px"
-                  priority={index === 0}
-                />
+              <div className="promo-carousel__visual-row">
+                <div
+                  className={`promo-carousel__visual${"variant" in slide && slide.variant === "product" ? " promo-carousel__visual--product" : ""}`}
+                >
+                  <div className="promo-carousel__visual-frame" aria-hidden />
+                  <Image
+                    src={slide.image}
+                    alt={slide.imageAlt}
+                    fill
+                    className="promo-carousel__image object-cover"
+                    sizes="(max-width: 768px) 55vw, 420px"
+                    priority={index === 0}
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -161,6 +197,7 @@ export function PromoCarousel() {
                   type="button"
                   className={`promo-carousel__dot${dotIndex === index ? " is-active" : ""}`}
                   aria-label={`Акция ${dotIndex + 1}`}
+                  aria-current={dotIndex === index ? "true" : undefined}
                   onClick={() => goTo(dotIndex)}
                 />
               ))}

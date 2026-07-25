@@ -5,7 +5,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.25rem;
+  padding:
+    calc(1.25rem + env(safe-area-inset-top, 0px))
+    calc(1.25rem + env(safe-area-inset-right, 0px))
+    calc(1.25rem + env(safe-area-inset-bottom, 0px))
+    calc(1.25rem + env(safe-area-inset-left, 0px));
 }
 
 .first-visit-promo__backdrop {
@@ -32,14 +36,20 @@
 
 .first-visit-promo__close {
   position: absolute;
-  top: 0.75rem;
-  right: 0.85rem;
+  top: 0.35rem;
+  right: 0.35rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
   border: 0;
   background: transparent;
   font-size: 1.5rem;
   line-height: 1;
   color: rgba(192, 192, 192, 0.7);
   cursor: pointer;
+  touch-action: manipulation;
   transition: color 0.2s ease;
 }
 

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
@@ -83,8 +84,16 @@ export function CartPageContent() {
 
           return (
           <li key={item.slug} className="cart-line">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={item.image} alt="" className="cart-line__image" />
+            <span className="cart-line__image-wrap">
+              <Image
+                src={item.image}
+                alt=""
+                width={72}
+                height={72}
+                className="cart-line__image"
+                style={{ objectFit: "contain", backgroundColor: "#ffffff" }}
+              />
+            </span>
             <div className="cart-line__info">
               <p className="cart-line__brand">{item.brand}</p>
               <Link href={`/kosmetika/${item.slug}`} className="cart-line__name">

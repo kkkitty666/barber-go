@@ -7,7 +7,8 @@ import { getAllProductSlugs, getProductBySlug } from "@/config/products";
 import { pageSeo } from "@/config/site";
 import { getProductWithInventoryBySlug } from "@/lib/inventory";
 
-export const dynamic = "force-dynamic";
+/** Inventory-backed PDP; short ISR instead of force-dynamic. */
+export const revalidate = 60;
 
 interface ProductPageProps {
   params: Promise<{ slug: string }>;

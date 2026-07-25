@@ -22,7 +22,7 @@ export function Booking() {
 
           <div className="qr-frame mx-auto mb-6">
             <QRCodeSVG
-              value={siteConfig.dikidiUrl}
+              value={siteConfig.bookingUrl}
               size={180}
               level="M"
               fgColor="#1a1a1a"
@@ -41,7 +41,7 @@ export function Booking() {
           </p>
 
           <a
-            href={siteConfig.dikidiUrl}
+            href={siteConfig.bookingUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary text-xs"

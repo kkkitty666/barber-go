@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { BlogPost } from "@/config/blog";
 import { CornerFlourish } from "./DecorativeElements";
@@ -28,8 +29,13 @@ export function BlogArticle({ post }: BlogArticleProps) {
         <CornerFlourish position="top-right" className="right-2 top-2 !h-8 !w-8" />
         <CornerFlourish position="bottom-left" className="bottom-2 left-2 !h-8 !w-8" />
         <CornerFlourish position="bottom-right" className="right-2 bottom-2 !h-8 !w-8" />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={post.image} alt="" className="blog-article__hero-image" />
+        <Image
+          src={post.image}
+          alt={post.title}
+          fill
+          sizes="(max-width: 768px) 100vw, 900px"
+          className="blog-article__hero-image"
+        />
       </div>
 
       <div className="blog-article__body">

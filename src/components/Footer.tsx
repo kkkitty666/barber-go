@@ -1,4 +1,6 @@
+import Image from "next/image";
 import { assets, siteConfig } from "@/config/site";
+import { CookieSettingsButton } from "./CookieConsent";
 import { LandscapeFooter } from "./DecorativeElements";
 import { MessengerIcon } from "./MessengerIcon";
 import { OrnamentDivider } from "./OrnamentDivider";
@@ -10,14 +12,12 @@ export function Footer() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-8 flex flex-col items-center gap-6 md:flex-row md:justify-between">
             <div className="flex items-center gap-4">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src={assets.logoGold}
                 alt={siteConfig.name}
                 width={64}
                 height={64}
                 className="h-14 w-14 object-contain"
-                decoding="async"
               />
               <div>
                 <p className="font-display text-sm tracking-[0.2em] text-gold">{siteConfig.name}</p>
@@ -58,6 +58,7 @@ export function Footer() {
               <a href="/oferta" className="hover:text-gold">
                 Оферта
               </a>
+              <CookieSettingsButton className="hover:text-gold" />
               <p>{siteConfig.fullAddress} · {siteConfig.hours}</p>
             </div>
           </div>

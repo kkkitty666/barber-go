@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { formatPrice, type ProductCategory } from "@/config/products";
@@ -7,6 +8,7 @@ import type { ProductWithInventory } from "@/lib/inventory";
 import { AddToCartControls } from "./AddToCartControls";
 import { CornerFlourish } from "./DecorativeElements";
 import { ProductCatalogNav } from "./ProductCatalogNav";
+import { StickyCatalogAside } from "./StickyCatalogAside";
 import "./ProductCatalog.css";
 
 function StockBadge({
@@ -40,12 +42,12 @@ export function ProductCatalog({ products }: ProductCatalogProps) {
 
   return (
     <div className="product-catalog">
-      <aside className="product-catalog-aside">
+      <StickyCatalogAside>
         <ProductCatalogNav
           selected={selectedCategory}
           onSelect={setSelectedCategory}
         />
-      </aside>
+      </StickyCatalogAside>
 
       <div className="product-catalog-grid">
         {filteredProducts.length > 0 ? (
@@ -62,13 +64,13 @@ export function ProductCatalog({ products }: ProductCatalogProps) {
               aria-label={product.name}
             >
               <span className="product-card__image-wrap">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={product.image}
                   alt={product.name}
-                  loading="lazy"
-                  decoding="async"
+                  fill
+                  sizes="(max-width: 640px) 42vw, (max-width: 1100px) 28vw, 280px"
                   className="product-card__image"
+                  style={{ objectFit: "contain", backgroundColor: "#ffffff" }}
                 />
               </span>
             </Link>

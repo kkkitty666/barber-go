@@ -116,29 +116,31 @@
 .add-to-cart__qty--card {
   flex: 0 0 auto;
   justify-content: center;
-  min-height: 1.85rem;
-  padding: 0.12rem 0.28rem;
+  min-height: 2.75rem;
+  padding: 0.2rem 0.35rem;
   border-color: rgba(192, 192, 192, 0.35);
   border-radius: var(--radius-sm, 0.45rem);
   background: rgba(8, 7, 6, 0.72);
 }
 
 .add-to-cart__qty--card button {
-  width: 1.15rem;
-  height: 1.15rem;
-  font-size: 0.82rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  font-size: 0.95rem;
+  touch-action: manipulation;
 }
 
 .add-to-cart__qty--card .add-to-cart__qty-input {
-  width: 1.45rem;
-  min-width: 1.45rem;
-  font-size: 0.7rem;
+  width: 1.7rem;
+  min-width: 1.7rem;
+  min-height: 2.25rem;
+  font-size: 0.78rem;
 }
 
 .add-to-cart__btn--card {
   width: auto;
-  min-height: 1.85rem;
-  padding: 0.35rem 0.7rem;
+  min-height: 2.75rem;
+  padding: 0.45rem 0.85rem;
   border: 1px solid var(--gold);
   border-radius: var(--radius-sm, 0.45rem);
   background: color-mix(in srgb, var(--gold) 10%, transparent);
@@ -147,6 +149,7 @@
   letter-spacing: 0.12em;
   color: var(--gold);
   text-transform: uppercase;
+  touch-action: manipulation;
   transition:
     background 0.2s ease,
     color 0.2s ease;
@@ -163,8 +166,8 @@
   justify-content: center;
   flex: 1 1 auto;
   width: auto;
-  min-height: 1.85rem;
-  padding: 0.3rem 0.55rem;
+  min-height: 2.75rem;
+  padding: 0.4rem 0.65rem;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm, 0.45rem);
   background: rgba(192, 192, 192, 0.06);

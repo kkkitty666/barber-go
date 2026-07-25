@@ -1,10 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { Cinzel, Cinzel_Decorative, Montserrat, UnifrakturMaguntia } from "next/font/google";
 import "./globals.css";
+import { CookieConsent } from "@/components/CookieConsent";
 import { LocalBusinessJsonLd } from "@/components/LocalBusinessJsonLd";
 import { SiteBackground } from "@/components/SiteBackground";
 import { YandexMetrika } from "@/components/YandexMetrika";
 import { assets, siteConfig } from "@/config/site";
+import { getSiteUrl } from "@/lib/site-url";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -31,7 +33,7 @@ const unifraktur = UnifrakturMaguntia({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://pc-barbershop.ru"),
+  metadataBase: new URL(getSiteUrl()),
   title: siteConfig.seo.title,
   description: siteConfig.seo.description,
   icons: {
@@ -67,10 +69,12 @@ export default function RootLayout({
     <html
       lang="ru"
       data-bg-mode="grainient"
+      data-scroll-behavior="smooth"
       className={`${montserrat.variable} ${cinzel.variable} ${cinzelDecorative.variable} ${unifraktur.variable} h-full antialiased`}
     >
       <body className="relative min-h-full text-foreground">
         <YandexMetrika />
+        <CookieConsent />
         <LocalBusinessJsonLd />
         <SiteBackground />
         <div className="relative z-10">{children}</div>

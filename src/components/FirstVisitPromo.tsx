@@ -50,7 +50,7 @@ export function FirstVisitPromo() {
 
         <div className="first-visit-promo__actions">
           <a
-            href={siteConfig.dikidiUrl}
+            href={siteConfig.bookingUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary first-visit-promo__cta"

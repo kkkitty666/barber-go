@@ -36,7 +36,7 @@ function barberToChromaItem(
     specialties: [...barber.specialties],
     borderColor: theme.borderColor,
     gradient: theme.gradient,
-    url: siteConfig.dikidiUrl,
+    url: siteConfig.bookingUrl,
   };
 }
 

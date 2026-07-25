@@ -1,4 +1,5 @@
 import { timingSafeEqual } from "crypto";
+import { getSiteUrl } from "@/lib/site-url";
 
 /** Constant-time string compare for secrets. Length mismatch returns false without leaking via timingSafeEqual throw. */
 export function safeEqualSecret(
@@ -20,9 +21,9 @@ export function safeEqualSecret(
  * Requests without Origin (non-browser) are allowed.
  */
 export function isAllowedRequestOrigin(request: Request): boolean {
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "");
-  if (!appUrl) return true;
+  if (!process.env.NEXT_PUBLIC_APP_URL?.trim()) return true;
 
+  const appUrl = getSiteUrl();
   const origin = request.headers.get("origin");
   if (!origin) return true;
 
