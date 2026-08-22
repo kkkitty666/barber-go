@@ -87,19 +87,19 @@ export const siteConfig = {
         description:
           "Приходите в PC Барбершоп впервые и получите скидку на стрижку или комплекс. Сообщите о акции при записи или перед оплатой.",
         cta: { label: "Записаться онлайн", href: BOOKING_URL, external: true },
-        image: "/assets/works/work-2.png",
-        imageAlt: "Мужская стрижка с высоким фейдом в PC Барбершоп",
+        image: "/assets/promotions/first-visit-centered-v2.png",
+        imageAlt: "Золотые парикмахерские ножницы и приглашение на первое посещение",
       },
       {
-        id: "online-booking",
-        badge: "Удобная запись",
-        headline: "Онлайн-запись",
-        headlineAccent: "без ожидания",
+        id: "combo-cut-beard",
+        badge: "Борода",
+        headline: "Магнат —",
+        headlineAccent: "премиум для бороды",
         description:
-          "Выбирайте мастера и время в YCLIENTS — приходите в назначенный час без очереди. Работаем с 9:00 до 20:00 на Батуринской.",
-        cta: { label: "Выбрать время", href: BOOKING_URL, external: true },
-        image: "/assets/hero-poster-rs.jpg",
-        imageAlt: "Постер PC Барбершоп — онлайн-запись и контакты",
+          "Распаривание горячим полотенцем, моделирование формы и окантовка опасной бритвой — услуга «Магнат» для безупречного контура.",
+        cta: { label: "Смотреть прайс", href: "/uslugi", external: false },
+        image: "/assets/promotions/beard-centered-v2.png",
+        imageAlt: "Опасная бритва, помазок и горячее полотенце для ухода за бородой",
       },
       {
         id: "cosmetics",
@@ -109,8 +109,8 @@ export const siteConfig = {
         description:
           "Линейка White Detox — профессиональный уход за волосами. Соберите заказ на сайте — заберите в барбершоп после стрижки.",
         cta: { label: "Открыть каталог", href: "/kosmetika", external: false },
-        image: "/assets/products/white-detox/deep-cleansing-shampoo.png",
-        imageAlt: "White Detox — шампунь глубокого очищения",
+        image: "/assets/promotions/cosmetics-white-v3.png",
+        imageAlt: "Минималистичная композиция косметики White Detox и чёрного полотенца",
         variant: "product",
       },
       {
@@ -121,24 +121,32 @@ export const siteConfig = {
         description:
           "Приходите с ребёнком: услуга «Преемник» для юных джентльменов 5–12 лет. Запишитесь на удобное время для двоих.",
         cta: { label: "Смотреть услуги", href: "/uslugi", external: false },
-        image: "/assets/works/work-3.png",
-        imageAlt: "Детская стрижка в PC Барбершоп",
+        image: "/assets/promotions/father-son-centered-v2.png",
+        imageAlt: "Два гребня и две чёрные парикмахерские накидки для стрижки отца и сына",
       },
     ],
   },
 
   worksGallery: [
     {
-      src: "/assets/works/work-1.png",
-      alt: "Бритьё головы и оформление бороды — PC Барбершоп",
+      src: "/assets/works/curly-profile.jpeg",
+      alt: "Профильная стрижка с текстурными кудрями",
     },
     {
-      src: "/assets/works/work-2.png",
-      alt: "Короткая стрижка с высоким фейдом — PC Барбершоп",
+      src: "/assets/works/haircut-process.jpeg",
+      alt: "Работа барбера над мужской стрижкой",
     },
     {
-      src: "/assets/works/work-3.png",
-      alt: "Детская стрижка в PC Барбершоп",
+      src: "/assets/works/classic-detail.jpeg",
+      alt: "Детали классической мужской стрижки",
+    },
+    {
+      src: "/assets/works/beard-profile.jpeg",
+      alt: "Оформление бороды и текстурной стрижки",
+    },
+    {
+      src: "/assets/works/beard-shaping.jpeg",
+      alt: "Процесс оформления бороды в барбершопе",
     },
   ],
 

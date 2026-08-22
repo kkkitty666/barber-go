@@ -10,9 +10,8 @@ export function OrderHistoryButton() {
   return (
     <Link
       href="/kosmetika/zakazy"
-      className={`shop-icon-button${active ? " shop-icon-button--active" : ""}`}
-      aria-label="История заказов"
-      title="История заказов"
+      className={`shop-action-button${active ? " shop-action-button--active" : ""}`}
+      aria-label="Мои заказы"
     >
       <svg viewBox="0 0 24 24" fill="none" aria-hidden className="h-5 w-5">
         <path
@@ -29,6 +28,7 @@ export function OrderHistoryButton() {
         />
         <path d="M9 12h6M9 16h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
       </svg>
+      <span>Мои заказы</span>
     </Link>
   );
 }

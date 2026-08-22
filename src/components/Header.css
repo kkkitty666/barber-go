@@ -31,9 +31,28 @@
 }
 
 .site-header__inner {
+  position: relative;
   padding-top: 0.35rem;
   padding-bottom: 0.35rem;
   min-height: 3.25rem;
+}
+
+@media (max-width: 767px) {
+  .site-header__inner {
+    justify-content: space-between;
+  }
+
+  .header-logo-wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .header-right {
+    flex: 0 0 auto;
+    margin-left: auto;
+  }
 }
 
 @media (min-width: 768px) {
@@ -73,13 +92,13 @@
 }
 
 .header-shop-dock {
-  position: fixed;
+  position: absolute;
+  top: calc(100% + 0.625rem);
   right: calc(0.65rem + var(--safe-right));
   z-index: 49;
   display: flex;
   justify-content: flex-end;
   pointer-events: none;
-  will-change: top;
 }
 
 @media (min-width: 768px) {
@@ -90,21 +109,22 @@
 
 .header-shop-dock .shop-header-actions {
   pointer-events: auto;
-  gap: 0.15rem;
-  padding: 0.2rem 0.3rem;
-  border: 1px solid var(--border);
-  border-radius: 9999px;
-  background: color-mix(in srgb, var(--background) 78%, transparent);
-  backdrop-filter: blur(14px) saturate(1.1);
-  -webkit-backdrop-filter: blur(14px) saturate(1.1);
-  box-shadow:
-    0 8px 22px rgba(0, 0, 0, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
-.header-shop-dock .shop-icon-button {
-  min-width: 2.35rem;
-  min-height: 2.35rem;
+.header-shop-dock .shop-action-button {
+  min-height: 2.7rem;
+  padding-inline: 0.9rem;
+}
+
+@media (max-width: 560px) {
+  .header-shop-dock .shop-action-button {
+    min-width: 2.7rem;
+    padding-inline: 0.72rem;
+  }
+
+  .header-shop-dock .shop-action-button > span:not(.shop-action-button__badge) {
+    display: none;
+  }
 }
 
 .site-header--menu-open {

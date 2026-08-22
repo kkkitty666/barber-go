@@ -3,15 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { assets, siteConfig } from "@/config/site";
-import { useHeaderVisibility } from "@/hooks/useHeaderVisibility";
 import { ShopHeaderActions } from "./CartButton";
 import "./Header.css";
-
-const SHOP_DOCK_GAP = 10;
-const HEADER_TRANSITION_MS = 320;
 
 function NavLink({
   href,
@@ -39,11 +35,7 @@ function NavLink({
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [dockTop, setDockTop] = useState(72);
   const pathname = usePathname();
-  const headerVisible = useHeaderVisibility();
-  const headerBarRef = useRef<HTMLElement>(null);
-  const raisedTopRef = useRef(12);
 
   const isActive = (href: string) => {
     if (href.includes("#")) return false;
@@ -52,51 +44,6 @@ export function Header() {
   };
 
   const closeMenu = () => setMenuOpen(false);
-
-  useLayoutEffect(() => {
-    const headerBar = headerBarRef.current;
-    if (!headerBar) return;
-
-    let raf = 0;
-    let timeoutId = 0;
-
-    const syncDock = () => {
-      const rect = headerBar.getBoundingClientRect();
-      if (rect.top > 0 || headerVisible) {
-        raisedTopRef.current = Math.max(8, Math.round(rect.top));
-      }
-      const belowHeader = Math.round(rect.bottom + SHOP_DOCK_GAP);
-      setDockTop(Math.max(belowHeader, raisedTopRef.current));
-    };
-
-    const trackTransition = () => {
-      const started = performance.now();
-      const tick = (now: number) => {
-        syncDock();
-        if (now - started < HEADER_TRANSITION_MS) {
-          raf = requestAnimationFrame(tick);
-        }
-      };
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(tick);
-      window.clearTimeout(timeoutId);
-      timeoutId = window.setTimeout(syncDock, HEADER_TRANSITION_MS + 40);
-    };
-
-    syncDock();
-    trackTransition();
-
-    const onResize = () => syncDock();
-    window.addEventListener("resize", onResize);
-    window.visualViewport?.addEventListener("resize", onResize);
-
-    return () => {
-      cancelAnimationFrame(raf);
-      window.clearTimeout(timeoutId);
-      window.removeEventListener("resize", onResize);
-      window.visualViewport?.removeEventListener("resize", onResize);
-    };
-  }, [headerVisible]);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -148,12 +95,9 @@ export function Header() {
   return (
     <>
       <div
-        className={`header-shell fixed top-0 right-0 left-0 z-50 transition-transform duration-300 ease-in-out ${
-          headerVisible ? "translate-y-0" : "-translate-y-full"
-        }`}
+        className="header-shell fixed top-0 right-0 left-0 z-50"
       >
         <header
-          ref={headerBarRef}
           className={`site-header${menuOpen ? " site-header--menu-open" : ""}`}
         >
           <div className="site-header__inner mx-auto flex max-w-[90rem] items-center px-3 md:px-5 xl:px-7">
@@ -221,14 +165,10 @@ export function Header() {
             </div>
           </div>
         </header>
-      </div>
 
-      <div
-        className="header-shop-dock"
-        style={{ top: dockTop }}
-        aria-label="Заказы и корзина"
-      >
-        <ShopHeaderActions />
+        <div className="header-shop-dock" aria-label="Заказы и корзина">
+          <ShopHeaderActions />
+        </div>
       </div>
 
       {mobileMenu}

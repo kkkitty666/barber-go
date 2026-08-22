@@ -13,6 +13,7 @@ import {
   isValidCreateOrderPayload,
   normalizePhone,
   sanitizeComment,
+  mergeOrderItems,
   type Order,
   type OrderItem,
 } from "@/lib/orders";
@@ -47,10 +48,15 @@ export async function POST(request: Request) {
 
     const orderItems: OrderItem[] = [];
     let total = 0;
+    const items = mergeOrderItems(payload.items);
 
-    const { products } = await reserveInventoryForOrder(payload.items);
+    if (items.some((item) => item.quantity > 20)) {
+      return NextResponse.json({ error: "Слишком большое количество товара" }, { status: 400 });
+    }
 
-    for (const item of payload.items) {
+    const { products } = await reserveInventoryForOrder(items);
+
+    for (const item of items) {
       const product = products.find((p) => p.slug === item.slug);
       if (!product) {
         return NextResponse.json({ error: `Товар недоступен: ${item.slug}` }, { status: 400 });

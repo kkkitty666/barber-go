@@ -159,16 +159,24 @@ export async function reserveInventoryForOrder(
 ): Promise<{ products: ProductWithInventory[] }> {
   return updateInventoryMap(async (inventory) => {
     const resolvedProducts: ProductWithInventory[] = [];
-
+    const quantities = new Map<string, number>();
     for (const item of items) {
-      const product = ensureProduct(item.slug);
+      const quantity = (quantities.get(item.slug) ?? 0) + item.quantity;
+      if (!Number.isSafeInteger(quantity) || quantity <= 0) {
+        throw new InventoryError("Некорректное количество товара");
+      }
+      quantities.set(item.slug, quantity);
+    }
+
+    for (const [slug, quantity] of quantities) {
+      const product = ensureProduct(slug);
       const current = withAvailability(product, inventory);
 
       if (!current.inStock) {
         throw new InventoryError(`Товар недоступен: ${product.name}`);
       }
 
-      if (current.quantity !== null && item.quantity > current.quantity) {
+      if (current.quantity !== null && quantity > current.quantity) {
         throw new InventoryError(
           current.quantity > 0
             ? `Доступно только ${current.quantity} шт.: ${product.name}`
@@ -179,11 +187,11 @@ export async function reserveInventoryForOrder(
       resolvedProducts.push(current);
     }
 
-    for (const item of items) {
-      const record = inventory[item.slug];
+    for (const [slug, quantity] of quantities) {
+      const record = inventory[slug];
       if (!record || record.quantity === null) continue;
-      inventory[item.slug] = {
-        quantity: Math.max(0, record.quantity - item.quantity),
+      inventory[slug] = {
+        quantity: Math.max(0, record.quantity - quantity),
         updatedAt: new Date().toISOString(),
       };
     }

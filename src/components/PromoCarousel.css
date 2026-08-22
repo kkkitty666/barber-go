@@ -292,7 +292,7 @@
 
 .promo-carousel__image {
   position: absolute !important;
-  inset: 0 10% 10% 0;
+  inset: 0;
   z-index: 1;
   width: auto;
   height: auto;
@@ -300,6 +300,7 @@
   border: 1px solid var(--border);
   box-shadow: 0 22px 48px rgba(0, 0, 0, 0.35);
   object-fit: cover;
+  object-position: center;
 }
 
 .promo-carousel__visual--product .promo-carousel__image {

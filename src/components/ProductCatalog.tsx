@@ -3,11 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { formatPrice, type ProductCategory } from "@/config/products";
+import { formatPrice } from "@/config/products";
 import type { ProductWithInventory } from "@/lib/inventory";
 import { AddToCartControls } from "./AddToCartControls";
 import { CornerFlourish } from "./DecorativeElements";
-import { ProductCatalogNav } from "./ProductCatalogNav";
+import { ProductCatalogNav, type CatalogCategory } from "./ProductCatalogNav";
 import { StickyCatalogAside } from "./StickyCatalogAside";
 import "./ProductCatalog.css";
 
@@ -37,8 +37,11 @@ interface ProductCatalogProps {
 }
 
 export function ProductCatalog({ products }: ProductCatalogProps) {
-  const [selectedCategory, setSelectedCategory] = useState<ProductCategory>("detox");
-  const filteredProducts = products.filter((product) => product.category === selectedCategory);
+  const [selectedCategory, setSelectedCategory] = useState<CatalogCategory>("all");
+  const filteredProducts =
+    selectedCategory === "all"
+      ? products
+      : products.filter((product) => product.category === selectedCategory);
 
   return (
     <div className="product-catalog">

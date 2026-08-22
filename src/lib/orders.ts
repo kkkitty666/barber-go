@@ -66,6 +66,15 @@ export function sanitizeComment(comment: string | undefined): string | undefined
   return trimmed.slice(0, MAX_COMMENT_LENGTH);
 }
 
+/** Combine duplicate cart lines before stock checks and order creation. */
+export function mergeOrderItems(items: CreateOrderPayload["items"]): CreateOrderPayload["items"] {
+  const merged = new Map<string, number>();
+  for (const item of items) {
+    merged.set(item.slug, (merged.get(item.slug) ?? 0) + item.quantity);
+  }
+  return Array.from(merged, ([slug, quantity]) => ({ slug, quantity }));
+}
+
 export function isValidCreateOrderPayload(payload: unknown): payload is CreateOrderPayload {
   if (!payload || typeof payload !== "object") return false;
   const p = payload as CreateOrderPayload;
@@ -84,7 +93,10 @@ export function isValidCreateOrderPayload(payload: unknown): payload is CreateOr
     p.items.every(
       (item) =>
         typeof item.slug === "string" &&
+        item.slug.length <= 120 &&
         typeof item.quantity === "number" &&
+        Number.isFinite(item.quantity) &&
+        Number.isInteger(item.quantity) &&
         item.quantity > 0 &&
         item.quantity <= 20,
     )

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function BarbersPage() {
   return (
     <SiteShell>
-      <PageSection title="БАРБЕР" subtitle={siteConfig.motto}>
+      <PageSection title="БАРБЕРЫ" subtitle={siteConfig.motto}>
         <Barbers />
       </PageSection>
     </SiteShell>

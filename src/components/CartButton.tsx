@@ -13,9 +13,8 @@ export function CartButton() {
   return (
     <Link
       href="/kosmetika/korzina"
-      className={`shop-icon-button${active ? " shop-icon-button--active" : ""}`}
-      aria-label={`Корзина, товаров: ${itemCount}`}
-      title="Корзина"
+      className={`shop-action-button${active ? " shop-action-button--active" : ""}`}
+      aria-label={`Корзина и оформление заказа, товаров: ${itemCount}`}
     >
       <svg viewBox="0 0 24 24" fill="none" aria-hidden className="h-5 w-5">
         <path
@@ -28,7 +27,8 @@ export function CartButton() {
         <circle cx="9.5" cy="19.5" r="1.25" fill="currentColor" />
         <circle cx="16.5" cy="19.5" r="1.25" fill="currentColor" />
       </svg>
-      {itemCount > 0 && <span className="shop-icon-button__badge">{itemCount}</span>}
+      <span>Корзина</span>
+      {itemCount > 0 && <span className="shop-action-button__badge">{itemCount}</span>}
     </Link>
   );
 }

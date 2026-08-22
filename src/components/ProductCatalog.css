@@ -29,33 +29,9 @@
   align-self: start;
 }
 
-/*
-  Mobile: sticky under header.
-  Desktop: relative in-flow (aligned with cards); StickyCatalogAside JS
-  switches to position:fixed on scroll so it stays put.
-*/
 .product-catalog-aside__pin {
-  position: sticky;
-  top: calc(var(--header-offset) + var(--safe-top) + 0.5rem);
-  z-index: 20;
+  position: static;
   width: 100%;
-  max-height: calc(
-    100dvh - var(--header-offset) - var(--safe-top) - var(--mobile-bar-height) - var(--safe-bottom) -
-      1rem
-  );
-  overflow-x: hidden;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  -webkit-overflow-scrolling: touch;
-}
-
-@media (min-width: 768px) {
-  .product-catalog-aside__pin {
-    position: relative;
-    top: auto;
-    max-height: none;
-    overflow: visible;
-  }
 }
 
 .product-catalog-grid {
@@ -149,6 +125,10 @@
 
 .product-catalog-nav__list::-webkit-scrollbar {
   display: none;
+}
+
+.product-catalog-nav__scroll {
+  position: relative;
 }
 
 @media (min-width: 768px) {

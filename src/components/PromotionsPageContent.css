@@ -59,7 +59,14 @@
 }
 
 .promo-card__image {
+  object-position: 50% center;
   transition: transform 0.55s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+@media (max-width: 767px) {
+  .promo-card__image {
+    object-position: 50% center;
+  }
 }
 
 .promo-card:hover .promo-card__image {
