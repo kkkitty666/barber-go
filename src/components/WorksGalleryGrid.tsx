@@ -98,6 +98,10 @@ export function WorksGalleryGrid() {
   const closeTimerRef = useRef<number | null>(null);
   const [lightbox, setLightbox] = useState<LightboxState | null>(null);
   const [backdropVisible, setBackdropVisible] = useState(false);
+  // Do not hide the source card or start the zoom animation until the full-size
+  // image is ready. Otherwise the frame briefly shows its black background while
+  // the browser is still fetching the image.
+  const [modalImageReady, setModalImageReady] = useState(false);
 
   const activeItem = lightbox !== null ? items[lightbox.index] : null;
 
@@ -112,6 +116,7 @@ export function WorksGalleryGrid() {
     (index: number, button: HTMLButtonElement) => {
       clearCloseTimer();
       setBackdropVisible(false);
+      setModalImageReady(false);
 
       const fromRect = toRect(button.getBoundingClientRect());
       const toRectValue = getExpandedRect();
@@ -162,7 +167,7 @@ export function WorksGalleryGrid() {
   }, [clearCloseTimer]);
 
   useLayoutEffect(() => {
-    if (!lightbox || lightbox.phase !== "entering") return;
+    if (!lightbox || lightbox.phase !== "entering" || !modalImageReady) return;
 
     frameRef.current?.getBoundingClientRect();
 
@@ -175,7 +180,7 @@ export function WorksGalleryGrid() {
     return () => {
       window.cancelAnimationFrame(prepareFrame);
     };
-  }, [lightbox?.index, lightbox?.phase]);
+  }, [lightbox?.index, lightbox?.phase, modalImageReady]);
 
   useLayoutEffect(() => {
     if (!lightbox || lightbox.phase !== "preparing") return;
@@ -262,7 +267,7 @@ export function WorksGalleryGrid() {
         </div>
         <div
           ref={frameRef}
-          className="works-lightbox__frame"
+          className={`works-lightbox__frame${modalImageReady ? "" : " works-lightbox__frame--loading"}`}
           style={getFrameStyle(lightbox)}
           onClick={(event) => event.stopPropagation()}
         >
@@ -270,9 +275,10 @@ export function WorksGalleryGrid() {
             src={activeItem.src}
             alt={activeItem.alt}
             fill
-            className="works-lightbox__image object-cover"
+            className={`works-lightbox__image object-cover${modalImageReady ? " works-lightbox__image--ready" : ""}`}
             sizes="(max-width: 768px) 92vw, 544px"
             priority
+            onLoad={() => setModalImageReady(true)}
           />
           <button
             type="button"
@@ -291,7 +297,9 @@ export function WorksGalleryGrid() {
       <div className="works-gallery-grid">
         {items.map((item, index) => {
           const isSourceHidden =
-            lightbox?.index === index && lightbox.phase !== "closing";
+            lightbox?.index === index &&
+            lightbox.phase !== "closing" &&
+            modalImageReady;
 
           return (
             <button
@@ -311,6 +319,7 @@ export function WorksGalleryGrid() {
                 height={800}
                 className="works-gallery-item__image"
                 sizes="(max-width: 640px) 42vw, (max-width: 1024px) 28vw, 220px"
+                loading="eager"
               />
             </button>
           );

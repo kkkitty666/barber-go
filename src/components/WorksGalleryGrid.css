@@ -122,8 +122,21 @@
   will-change: top, left, width, height, border-radius, transform;
 }
 
+.works-lightbox__frame--loading {
+  /* Keep the thumbnail visible underneath while the full-size image loads. */
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
 .works-lightbox__image {
   pointer-events: none;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.works-lightbox__image--ready {
+  opacity: 1;
 }
 
 .works-lightbox__close {
