@@ -302,8 +302,8 @@ export const siteConfig = {
   blogPage: {
     heroImage: "/assets/flyer-interior.png",
     subtitle:
-      "Последние новости и актуальная информация из мира мужских стрижек, barbering и настоящего стиля",
-    brandTagline: "Барбершоп с характером · Ростов-на-Дону",
+      "Понятно рассказываем об уходе, стайлинге и косметике White Cosmetics — с рекомендациями подходящих средств",
+    brandTagline: "White Cosmetics · профессиональный уход дома",
   },
 
   blogPromo: {
@@ -381,9 +381,9 @@ export const pageSeo = {
     description: "Барбер Илья — PC Барбершоп. Запись через YCLIENTS.",
   },
   blog: {
-    title: "Блог — PC Барбершоп",
+    title: "Гид по мужской косметике — PC Барбершоп",
     description:
-      "Интересная информация о мире barbering: стрижки, борода, уход и стиль от барбера PC Барбершоп.",
+      "Полезные статьи о White Cosmetics: уход за волосами и кожей головы, стайлинг, бритьё и выбор мужской косметики.",
   },
   kontakty: {
     title: "Контакты — PC Барбершоп",

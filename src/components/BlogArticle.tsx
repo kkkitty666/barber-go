@@ -34,7 +34,7 @@ export function BlogArticle({ post }: BlogArticleProps) {
           alt={post.title}
           fill
           sizes="(max-width: 768px) 100vw, 900px"
-          className="blog-article__hero-image"
+          className={`blog-article__hero-image${post.imageFit === "contain" ? " blog-article__hero-image--product" : ""}`}
         />
       </div>
 
@@ -47,6 +47,19 @@ export function BlogArticle({ post }: BlogArticleProps) {
             ))}
           </section>
         ))}
+
+        <aside className="blog-article__shop">
+          <p className="blog-article__shop-eyebrow">WHITE COSMETICS · ВЫБОР ИЗ СТАТЬИ</p>
+          <h2>Подберите уход для дома</h2>
+          <p>
+            Перейдите к рекомендованному средству, чтобы посмотреть описание,
+            способ применения, цену и наличие.
+          </p>
+          <Link href={post.shopHref} className="blog-article__shop-link">
+            {post.shopLabel}
+            <span aria-hidden>→</span>
+          </Link>
+        </aside>
       </div>
     </article>
   );

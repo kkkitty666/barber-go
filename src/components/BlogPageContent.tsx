@@ -26,7 +26,7 @@ export function BlogPageContent() {
         <div className="blog-hero-frame-wrap">
           <div className="blog-hero-frame">
             <div className="blog-hero-frame-inner">
-              <h1 className="blog-hero-title">БЛОГ PC БАРБЕРШОП</h1>
+              <h1 className="blog-hero-title">ГИД ПО КОСМЕТИКЕ</h1>
               <p className="blog-hero-subtitle">{siteConfig.blogPage.subtitle}</p>
             </div>
           </div>
@@ -41,7 +41,7 @@ export function BlogPageContent() {
                 src={featuredPost.image}
                 alt={featuredPost.title}
                 fill
-                className="object-cover"
+                className={featuredPost.imageFit === "contain" ? "blog-card-image--product" : "object-cover"}
                 sizes="(max-width: 1024px) 100vw, 66vw"
               />
               <div className="blog-featured-overlay" />
@@ -76,7 +76,7 @@ export function BlogPageContent() {
                   src={post.image}
                   alt={post.title}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className={`${post.imageFit === "contain" ? "blog-card-image--product" : "object-cover"} transition-transform duration-500 group-hover:scale-105`}
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div className="blog-post-overlay" />
