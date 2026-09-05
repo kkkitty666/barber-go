@@ -25,8 +25,8 @@ export const metadata: Metadata = {
   title: siteConfig.seo.title,
   description: siteConfig.seo.description,
   icons: {
-    icon: [{ url: "/icon.png", type: "image/png", sizes: "512x512" }],
-    apple: [{ url: "/icon.png", type: "image/png", sizes: "512x512" }],
+    icon: [{ url: "/favicon.ico?v=3", type: "image/x-icon" }],
+    apple: [{ url: "/icon.png?v=3", type: "image/png", sizes: "512x512" }],
   },
   openGraph: {
     title: siteConfig.seo.title,
