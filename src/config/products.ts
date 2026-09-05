@@ -175,7 +175,7 @@ const productSeeds: ProductSeed[] = [
     category: "detox",
     image:
       "/assets/products/white-cosmetics/WH_Mokap_SHampun-ochistki-250-ml.png",
-    price: 1440,
+    price: 2880,
     volume: "250 мл",
     sku: "WC3426",
     description:
@@ -194,7 +194,7 @@ const productSeeds: ProductSeed[] = [
     category: "detox",
     image:
       "/assets/products/white-cosmetics/Mokap-detoks-preshampun.png",
-    price: 2319,
+    price: 4638,
     volume: "250 мл",
     sku: "WC3422",
     description:
@@ -212,7 +212,7 @@ const productSeeds: ProductSeed[] = [
     category: "detox",
     image:
       "/assets/products/white-cosmetics/Mockup_Tonik.png",
-    price: 2270,
+    price: 4540,
     volume: "100 мл",
     sku: "WC3424",
     description:
@@ -230,7 +230,7 @@ const productSeeds: ProductSeed[] = [
     category: "detox",
     image:
       "/assets/products/white-cosmetics/WH_Mokap_SHampun-protiv-perkhoti-250-ml.png",
-    price: 2079,
+    price: 4158,
     volume: "250 мл",
     sku: "WC3425",
     description:
@@ -248,7 +248,7 @@ const productSeeds: ProductSeed[] = [
     category: "detox",
     image:
       "/assets/products/white-cosmetics/WH_Mokap_SHampun-protiv-vypadniya-250-ml.png",
-    price: 2079,
+    price: 4158,
     volume: "250 мл",
     sku: "WC3423",
     description:
@@ -266,7 +266,7 @@ const productSeeds: ProductSeed[] = [
     category: "detox",
     image:
       "/assets/products/white-cosmetics/Mockup_Tonik-protiv-perkhoti.png",
-    price: 2270,
+    price: 4540,
     volume: "100 мл",
     sku: "WC3427",
     description:
@@ -284,7 +284,7 @@ const productSeeds: ProductSeed[] = [
     category: "shampoos",
     image:
       "/assets/products/white-cosmetics/SHamp250.png",
-    price: 627,
+    price: 1254,
     volume: "250 мл",
     sku: "WC0004",
   },
@@ -295,7 +295,7 @@ const productSeeds: ProductSeed[] = [
     category: "shampoos",
     image:
       "/assets/products/white-cosmetics/SHamp5000.png",
-    price: 5492,
+    price: 10984,
     volume: "5 л",
   },
   {
@@ -305,7 +305,7 @@ const productSeeds: ProductSeed[] = [
     category: "shampoos",
     image:
       "/assets/products/white-cosmetics/SHamp100.png",
-    price: 337,
+    price: 674,
     volume: "100 мл",
   },
   {
@@ -315,7 +315,7 @@ const productSeeds: ProductSeed[] = [
     category: "shampoos",
     image:
       "/assets/products/white-cosmetics/SHamp1000.png",
-    price: 1538,
+    price: 3076,
     volume: "1000 мл",
   },
   {
@@ -325,7 +325,7 @@ const productSeeds: ProductSeed[] = [
     category: "conditioners",
     image:
       "/assets/products/white-cosmetics/Krem-sprey-dlya-volos-100ml.png",
-    price: 690,
+    price: 1380,
     volume: "100 мл",
   },
   {
@@ -335,7 +335,7 @@ const productSeeds: ProductSeed[] = [
     category: "conditioners",
     image:
       "/assets/products/white-cosmetics/Konditsioner250.png",
-    price: 627,
+    price: 1254,
     volume: "250 мл",
     sku: "WC0011",
   },
@@ -346,7 +346,7 @@ const productSeeds: ProductSeed[] = [
     category: "conditioners",
     image:
       "/assets/products/white-cosmetics/Krem-sprey-dlya-volos-250ml.png",
-    price: 1066,
+    price: 2132,
     volume: "250 мл",
   },
   {
@@ -356,7 +356,7 @@ const productSeeds: ProductSeed[] = [
     category: "conditioners",
     image:
       "/assets/products/white-cosmetics/Konditsioner1000.png",
-    price: 1563,
+    price: 3126,
     volume: "1000 мл",
   },
   {
@@ -366,7 +366,7 @@ const productSeeds: ProductSeed[] = [
     category: "conditioners",
     image:
       "/assets/products/white-cosmetics/Konditsioner100.png",
-    price: 326,
+    price: 652,
     volume: "100 мл",
   },
   {
@@ -376,7 +376,7 @@ const productSeeds: ProductSeed[] = [
     category: "shower-gels",
     image:
       "/assets/products/white-cosmetics/Sport250.png",
-    price: 584,
+    price: 1168,
     volume: "250 мл",
     sku: "WC2282",
   },
@@ -387,7 +387,7 @@ const productSeeds: ProductSeed[] = [
     category: "shower-gels",
     image:
       "/assets/products/white-cosmetics/Sport100.png",
-    price: 326,
+    price: 652,
     volume: "100 мл",
   },
   {
@@ -398,7 +398,7 @@ const productSeeds: ProductSeed[] = [
     // No dedicated 100 ml mockup in assets — use volume-neutral Cedar Wood packshot
     // (copied from TSedarVud250.png). Do not point at *250* filename for this SKU.
     image: "/assets/products/white-cosmetics/Cedar-Wood.png",
-    price: 326,
+    price: 652,
     volume: "100 мл",
   },
   {
@@ -408,7 +408,7 @@ const productSeeds: ProductSeed[] = [
     category: "shower-gels",
     image:
       "/assets/products/white-cosmetics/WH_Mokap_Gel-dlya-dusha-Sport-Energy-1000-ml.png",
-    price: 1266,
+    price: 2532,
     volume: "1000 мл",
   },
   {
@@ -418,7 +418,7 @@ const productSeeds: ProductSeed[] = [
     category: "shower-gels",
     image:
       "/assets/products/white-cosmetics/WH_Mokap_Gel-dlya-dusha-Cedar-wood-1000-ml.png",
-    price: 1266,
+    price: 2532,
     volume: "1000 мл",
   },
   {
@@ -428,7 +428,7 @@ const productSeeds: ProductSeed[] = [
     category: "shower-gels",
     image:
       "/assets/products/white-cosmetics/TSedarVud250.png",
-    price: 584,
+    price: 1168,
     volume: "250 мл",
   },
   {
@@ -438,7 +438,7 @@ const productSeeds: ProductSeed[] = [
     category: "shaving",
     image:
       "/assets/products/white-cosmetics/Gel-dlya-britya-250.png",
-    price: 967,
+    price: 1934,
     volume: "250 мл",
     sku: "WC0008",
   },
@@ -449,7 +449,7 @@ const productSeeds: ProductSeed[] = [
     category: "shaving",
     image:
       "/assets/products/white-cosmetics/WH_Mokap_krem-dlya-britya-250-ml-_2_-_1_.png",
-    price: 967,
+    price: 1934,
     volume: "250 мл",
   },
   {
@@ -459,7 +459,7 @@ const productSeeds: ProductSeed[] = [
     category: "shaving",
     image:
       "/assets/products/white-cosmetics/Gel-dlya-britya-1000.png",
-    price: 1806,
+    price: 3612,
     volume: "1000 мл",
   },
   {
@@ -469,7 +469,7 @@ const productSeeds: ProductSeed[] = [
     category: "styling",
     image:
       "/assets/products/white-cosmetics/Pudra-dlya-ukladki.png",
-    price: 936,
+    price: 1872,
     volume: "6 г (120 мл)",
   },
   {
@@ -479,7 +479,7 @@ const productSeeds: ProductSeed[] = [
     category: "styling",
     image:
       "/assets/products/white-cosmetics/Pasta100.png",
-    price: 1111,
+    price: 2222,
     volume: "100 мл",
     sku: "WC0027",
   },
@@ -490,7 +490,7 @@ const productSeeds: ProductSeed[] = [
     category: "styling",
     image:
       "/assets/products/white-cosmetics/ZHidkaya-pudra.png",
-    price: 1111,
+    price: 2222,
     volume: "100 мл",
   },
   {
@@ -500,7 +500,7 @@ const productSeeds: ProductSeed[] = [
     category: "styling",
     image:
       "/assets/products/white-cosmetics/Sprey-stayling-100ml.png",
-    price: 774,
+    price: 1548,
     volume: "100 мл",
   },
   {
@@ -510,7 +510,7 @@ const productSeeds: ProductSeed[] = [
     category: "styling",
     image:
       "/assets/products/white-cosmetics/Glina100.png",
-    price: 1111,
+    price: 2222,
     volume: "100 мл",
   },
   {
@@ -520,7 +520,7 @@ const productSeeds: ProductSeed[] = [
     category: "styling",
     image:
       "/assets/products/white-cosmetics/Sprey-stayling-250ml.png",
-    price: 1111,
+    price: 2222,
     volume: "250 мл",
   },
   {
@@ -530,7 +530,7 @@ const productSeeds: ProductSeed[] = [
     category: "styling",
     image:
       "/assets/products/white-cosmetics/Pasta50.png",
-    price: 722,
+    price: 1444,
     volume: "50 мл",
   },
   {
@@ -540,7 +540,7 @@ const productSeeds: ProductSeed[] = [
     category: "styling",
     image:
       "/assets/products/white-cosmetics/Glina50.png",
-    price: 722,
+    price: 1444,
     volume: "50 мл",
   },
   {
@@ -550,7 +550,7 @@ const productSeeds: ProductSeed[] = [
     category: "styling",
     image:
       "/assets/products/white-cosmetics/Gruming_tonik.png",
-    price: 1766,
+    price: 3532,
     volume: "250 мл",
   },
   {
@@ -560,7 +560,7 @@ const productSeeds: ProductSeed[] = [
     category: "styling",
     image:
       "/assets/products/white-cosmetics/Pudra-s-nosikom.png",
-    price: 1239,
+    price: 2478,
     volume: "6 г (30 мл)",
   },
   {
@@ -570,7 +570,7 @@ const productSeeds: ProductSeed[] = [
     category: "styling",
     image:
       "/assets/products/white-cosmetics/Pomada100.png",
-    price: 1111,
+    price: 2222,
     volume: "100 мл",
   },
   {
@@ -580,7 +580,7 @@ const productSeeds: ProductSeed[] = [
     category: "styling",
     image:
       "/assets/products/white-cosmetics/Pudra-dlya-temnykh-voloss-sifterom.png",
-    price: 819,
+    price: 1638,
     volume: "60 мл",
   },
   {
@@ -590,7 +590,7 @@ const productSeeds: ProductSeed[] = [
     category: "styling",
     image:
       "/assets/products/white-cosmetics/Pudra-dlya-volos-s-sifterom-png.png",
-    price: 819,
+    price: 1638,
     volume: "60 мл",
   },
   {
@@ -600,7 +600,7 @@ const productSeeds: ProductSeed[] = [
     category: "styling",
     image:
       "/assets/products/white-cosmetics/Pomada50.png",
-    price: 722,
+    price: 1444,
     volume: "50 мл",
   },
 ];
