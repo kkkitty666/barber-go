@@ -55,16 +55,8 @@ export async function LocalBusinessJsonLd() {
     },
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday",
-      ],
-      opens: "09:00",
+      // Дни работы намеренно не указываем: расписание по дням может меняться.
+      opens: "10:00",
       closes: "20:00",
     },
     sameAs: siteConfig.social.map((s) => s.url),

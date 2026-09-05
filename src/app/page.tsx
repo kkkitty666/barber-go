@@ -1,6 +1,5 @@
 import { SiteShell } from "@/components/SiteShell";
 import { About } from "@/components/About";
-import { BlogPromoSection } from "@/components/BlogPromoSection";
 import { HomeHero } from "@/components/HomeHero";
 import { HomeMapSection } from "@/components/HomeMapSection";
 import { PromoCarousel } from "@/components/PromoCarousel";
@@ -18,7 +17,6 @@ export default function HomePage() {
       <About />
       <WorksSection />
       <ReviewsSection />
-      <BlogPromoSection />
       <HomeMapSection />
     </SiteShell>
   );
