@@ -31,8 +31,8 @@ export function HomeHero() {
         <div className="hero-home__poster">
           <div className="hero-home__poster-frame">
             <Image
-              src="/assets/hero-poster-rs.jpg"
-              alt="Постер PC Барбершоп — Rebrand yourself"
+              src="/assets/hero-barbershop-chair.webp"
+              alt="Интерьер PC Барбершоп с барберским креслом"
               fill
               priority
               className="hero-home__poster-image"
