@@ -23,7 +23,7 @@ export const blogPosts: BlogPost[] = [
     date: "5 СЕНТЯБРЯ 2026",
     readTime: "6 МИН",
     category: "scalp-care",
-    image: "/assets/promotions/cosmetics-white-v3.png",
+    image: "/assets/blog/cosmetics/detox-deep-clean.webp",
     excerpt:
       "Почему обычного мытья иногда недостаточно и как удалить остатки стайлинга без ощущения пересушенных волос.",
     shopHref: "/kosmetika/white_detox_shampun_glubokogo_ochishcheniya_250_ml",
@@ -65,8 +65,7 @@ export const blogPosts: BlogPost[] = [
     date: "3 СЕНТЯБРЯ 2026",
     readTime: "7 МИН",
     category: "scalp-care",
-    image: "/assets/products/white-cosmetics/WH_Mokap_SHampun-protiv-perkhoti-250-ml.png",
-    imageFit: "contain",
+    image: "/assets/blog/cosmetics/anti-dandruff.webp",
     excerpt:
       "Похожие симптомы требуют разного подхода. Разбираемся, когда менять уход, а когда обращаться к дерматологу.",
     shopHref: "/kosmetika/white_detox_shampun_protiv_perkhoti_250_ml",
@@ -106,8 +105,7 @@ export const blogPosts: BlogPost[] = [
     date: "31 АВГУСТА 2026",
     readTime: "6 МИН",
     category: "scalp-care",
-    image: "/assets/products/white-cosmetics/Mockup_Tonik.png",
-    imageFit: "contain",
+    image: "/assets/blog/cosmetics/hair-tonic.webp",
     excerpt:
       "Зачем нужен несмываемый тоник, как наносить его по проборам и почему регулярность важнее большого количества.",
     shopHref: "/kosmetika/white_detox_tonik_protiv_vypadeniya_volos_100_ml",
@@ -147,8 +145,7 @@ export const blogPosts: BlogPost[] = [
     date: "28 АВГУСТА 2026",
     readTime: "8 МИН",
     category: "styling",
-    image: "/assets/products/white-cosmetics/Pasta100.png",
-    imageFit: "contain",
+    image: "/assets/blog/cosmetics/styling-paste.webp",
     excerpt:
       "Четыре вида стайлинга, четыре разных результата. Выбираем средство под длину, финиш и привычный способ укладки.",
     shopHref: "/kosmetika/white_pasta_dlya_ukladki_volos_100_ml",
@@ -190,8 +187,7 @@ export const blogPosts: BlogPost[] = [
     date: "25 АВГУСТА 2026",
     readTime: "5 МИН",
     category: "hair-care",
-    image: "/assets/products/white-cosmetics/Konditsioner250.png",
-    imageFit: "contain",
+    image: "/assets/blog/cosmetics/conditioner-care.webp",
     excerpt:
       "Шампунь очищает, кондиционер возвращает управляемость. Объясняем, кому он нужен и почему его не стоит наносить на корни.",
     shopHref: "/kosmetika/white_konditsioner_dlya_volos_250_ml",
@@ -231,8 +227,7 @@ export const blogPosts: BlogPost[] = [
     date: "22 АВГУСТА 2026",
     readTime: "7 МИН",
     category: "shaving",
-    image: "/assets/products/white-cosmetics/Gel-dlya-britya-250.png",
-    imageFit: "contain",
+    image: "/assets/blog/cosmetics/shaving-gel.webp",
     excerpt:
       "Температура воды, направление движения и качественное скольжение — детали, которые меняют результат домашнего бритья.",
     shopHref: "/kosmetika/white_gel_dlya_britya_250_ml",
@@ -273,8 +268,7 @@ export const blogPosts: BlogPost[] = [
     date: "19 АВГУСТА 2026",
     readTime: "5 МИН",
     category: "body-care",
-    image: "/assets/products/white-cosmetics/TSedarVud250.png",
-    imageFit: "contain",
+    image: "/assets/blog/cosmetics/cedar-wood.webp",
     excerpt:
       "Древесный Cedar Wood или бодрый Sport Energy — выбираем аромат, который не спорит с вашим парфюмом.",
     shopHref: "/kosmetika/white_gel_parfyum_dlya_dusha_cedar_wood_250_ml",
